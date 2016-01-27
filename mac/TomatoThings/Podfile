@@ -1,0 +1,13 @@
+# platform :ios, '8.0'
+use_frameworks!
+
+target 'TomatoThings' do
+
+pod 'SnapKit', '~> 0.19'
+
+end
+
+target 'TomatoThingsTests' do
+
+end
+
