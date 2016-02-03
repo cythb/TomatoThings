@@ -17,6 +17,15 @@
 		50D1AABD1C32707900E3D703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50D1AABC1C32707900E3D703 /* Assets.xcassets */; };
 		50D1AAC01C32707900E3D703 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50D1AABE1C32707900E3D703 /* MainMenu.xib */; };
 		50D1AACB1C32707900E3D703 /* TomatoThingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1AACA1C32707900E3D703 /* TomatoThingsTests.swift */; };
+		50E756721C61A77F007A68CB /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756701C61A77F007A68CB /* Task+CoreDataProperties.swift */; };
+		50E756731C61A77F007A68CB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756711C61A77F007A68CB /* Task.swift */; };
+		50E756761C61A7EB007A68CB /* TaskDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756751C61A7EB007A68CB /* TaskDAL.swift */; };
+		50E756781C61AB57007A68CB /* TaskDALTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756771C61AB57007A68CB /* TaskDALTest.swift */; };
+		50E7567A1C61AC75007A68CB /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756791C61AC75007A68CB /* CoreDataHelper.swift */; };
+		50E756811C61AE66007A68CB /* CoreDataHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756801C61AE66007A68CB /* CoreDataHelperTests.swift */; };
+		50E756851C61D8ED007A68CB /* TaskBLL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756841C61D8ED007A68CB /* TaskBLL.swift */; };
+		50E756871C61EAE7007A68CB /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756861C61EAE7007A68CB /* TaskCell.swift */; };
+		50E756891C61F94A007A68CB /* TaskCellTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756881C61F94A007A68CB /* TaskCellTransformer.swift */; };
 		9183CE007C0268FABE41D5E9 /* Pods_TomatoThings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0353AA30CCFF5CDC9FEEE9D0 /* Pods_TomatoThings.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +56,15 @@
 		50D1AAC61C32707900E3D703 /* TomatoThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomatoThingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D1AACA1C32707900E3D703 /* TomatoThingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoThingsTests.swift; sourceTree = "<group>"; };
 		50D1AACC1C32707900E3D703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50E756701C61A77F007A68CB /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		50E756711C61A77F007A68CB /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		50E756751C61A7EB007A68CB /* TaskDAL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDAL.swift; sourceTree = "<group>"; };
+		50E756771C61AB57007A68CB /* TaskDALTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDALTest.swift; sourceTree = "<group>"; };
+		50E756791C61AC75007A68CB /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		50E756801C61AE66007A68CB /* CoreDataHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelperTests.swift; sourceTree = "<group>"; };
+		50E756841C61D8ED007A68CB /* TaskBLL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskBLL.swift; sourceTree = "<group>"; };
+		50E756861C61EAE7007A68CB /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		50E756881C61F94A007A68CB /* TaskCellTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellTransformer.swift; sourceTree = "<group>"; };
 		6CE3D0F2A8A16BE0916BB134 /* Pods-TomatoThings.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomatoThings.release.xcconfig"; path = "Pods/Target Support Files/Pods-TomatoThings/Pods-TomatoThings.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +134,8 @@
 			children = (
 				50D1AACA1C32707900E3D703 /* TomatoThingsTests.swift */,
 				50D1AACC1C32707900E3D703 /* Info.plist */,
+				50E756771C61AB57007A68CB /* TaskDALTest.swift */,
+				50E756801C61AE66007A68CB /* CoreDataHelperTests.swift */,
 			);
 			path = TomatoThingsTests;
 			sourceTree = "<group>";
@@ -123,6 +143,7 @@
 		50E756691C61A3A1007A68CB /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				50E756841C61D8ED007A68CB /* TaskBLL.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -131,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				50D1AAB91C32707900E3D703 /* TomatoThings.xcdatamodeld */,
+				50E756741C61A7DA007A68CB /* DAL */,
+				50E7566F1C61A77F007A68CB /* Model */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -148,6 +171,7 @@
 		50E7566C1C61A3A1007A68CB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				50E756861C61EAE7007A68CB /* TaskCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,6 +184,7 @@
 				504EC9711C58665000895FC8 /* BoxListViewController.xib */,
 				504EC9741C58665A00895FC8 /* TaskListViewController.swift */,
 				504EC9751C58665A00895FC8 /* TaskListViewController.xib */,
+				50E756881C61F94A007A68CB /* TaskCellTransformer.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -169,6 +194,24 @@
 			children = (
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		50E7566F1C61A77F007A68CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				50E756701C61A77F007A68CB /* Task+CoreDataProperties.swift */,
+				50E756711C61A77F007A68CB /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		50E756741C61A7DA007A68CB /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+				50E756791C61AC75007A68CB /* CoreDataHelper.swift */,
+				50E756751C61A7EB007A68CB /* TaskDAL.swift */,
+			);
+			path = DAL;
 			sourceTree = "<group>";
 		};
 		F8CA2240368DBF575B74011A /* Pods */ = {
@@ -334,9 +377,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				504EC96B1C58625900895FC8 /* MainViewController.swift in Sources */,
+				50E756851C61D8ED007A68CB /* TaskBLL.swift in Sources */,
 				50D1AABB1C32707900E3D703 /* TomatoThings.xcdatamodeld in Sources */,
 				504EC9721C58665000895FC8 /* BoxListViewController.swift in Sources */,
 				50D1AAB81C32707900E3D703 /* AppDelegate.swift in Sources */,
+				50E756761C61A7EB007A68CB /* TaskDAL.swift in Sources */,
+				50E756721C61A77F007A68CB /* Task+CoreDataProperties.swift in Sources */,
+				50E756871C61EAE7007A68CB /* TaskCell.swift in Sources */,
+				50E7567A1C61AC75007A68CB /* CoreDataHelper.swift in Sources */,
+				50E756731C61A77F007A68CB /* Task.swift in Sources */,
+				50E756891C61F94A007A68CB /* TaskCellTransformer.swift in Sources */,
 				504EC9761C58665A00895FC8 /* TaskListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +395,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E756811C61AE66007A68CB /* CoreDataHelperTests.swift in Sources */,
+				50E756781C61AB57007A68CB /* TaskDALTest.swift in Sources */,
 				50D1AACB1C32707900E3D703 /* TomatoThingsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = TomatoThings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = top.ioslearn.TomatoThings;
@@ -470,6 +523,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = TomatoThings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = top.ioslearn.TomatoThings;
