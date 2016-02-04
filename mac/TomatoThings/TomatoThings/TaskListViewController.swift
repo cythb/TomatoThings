@@ -60,57 +60,39 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
   
   func parseInputString(text: String) -> (title: String?, eNumT: Int) {
     // this is a title -e 3
-    // -t this is a title -e 3
-    // -e 3 this is a title
-    // -e 3 -t this is a title
-    let components = text.componentsSeparatedByString(" ")
-    var taskTitle: String?
+    var taskTitle: String? = nil
     var taskETNUM: Int! = 1
-    for var i = 0; i < components.count; i++ {
-      defer {
-        print(i)
+    var range = text.rangeOfString(" -")
+    
+    if nil != range {
+      taskTitle = text.substringToIndex(range!.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    }
+
+    while range != nil && range!.startIndex != range!.endIndex {
+      let temp = text.substringFromIndex(range!.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+      let components = temp.componentsSeparatedByString(" ")
+      guard components.count > 1 else {
+        break
       }
       
-      var cmd: String!
-      var value: String!
-      var first: String!
-      var second: String?
-      
-      if i+1 < components.count {
-        first = components[i]
-        second = components[i+1]
-      } else {
-        first = components[i]
-      }
-      if first.hasPrefix("-t") || first.hasPrefix("-e") {
-        cmd = first
-        value = second
-      } else {
-        cmd = nil
-        value = first
-        taskTitle = value
-        continue
-      }
-      
-      if cmd == "-t" {
-        guard value.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 else {
-          continue
+      let cmd = components[0]
+      var value = ""
+      for i in 1..<components.count {
+        if components[i] != "" {
+          value = components[i]
+          break
         }
-        
-        taskTitle = value
-        
-        i++
       }
       
       if cmd == "-e" {
-        guard Int(value) != nil else {
-          continue
-        }
-        
-        taskETNUM = Int(value)!
-        
-        i++
+        taskETNUM = Int(value)
       }
+      
+      range = text.rangeOfString(" -", options: .LiteralSearch, range: Range<String.Index>(start: range!.endIndex, end: text.endIndex), locale: nil)
+    }
+    
+    if taskTitle == nil || taskTitle == ""{
+      taskTitle = text
     }
     
     return (taskTitle, taskETNUM)

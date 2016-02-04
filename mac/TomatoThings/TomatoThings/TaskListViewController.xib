@@ -35,7 +35,7 @@
             <subviews>
                 <textField identifier="inputCell" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bCw-q6-r5g">
                     <rect key="frame" x="2" y="338" width="316" height="22"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="请输入待办事情" drawsBackground="YES" id="vjo-iV-aLs">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="请输入待办事情(任务标题 [-e 3])" drawsBackground="YES" id="vjo-iV-aLs">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -47,7 +47,7 @@
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJN-x2-QZM">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="338"/>
                     <clipView key="contentView" id="ULP-jO-7Wy">
-                        <rect key="frame" x="1" y="23" width="318" height="314"/>
+                        <rect key="frame" x="1" y="0.0" width="318" height="337"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="jgb-Np-w00" id="wXr-X4-dmr">
@@ -102,7 +102,7 @@
                         <rect key="frame" x="1" y="119" width="223" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="vSr-L4-PbE">
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="vSr-L4-PbE">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
