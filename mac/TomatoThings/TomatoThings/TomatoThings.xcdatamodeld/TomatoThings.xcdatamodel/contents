@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15B42" minimumToolsVersion="Automatic">
     <entity name="Task" representedClassName=".Task" syncable="YES">
-        <attribute name="actualNUMT" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="addition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="estimateNUMT" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="log" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TaskLog" inverseName="task" inverseEntity="TaskLog" syncable="YES"/>
+    </entity>
+    <entity name="TaskLog" representedClassName=".TaskLog" syncable="YES">
+        <attribute name="completeTomatos" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="finishDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="incompleteTomatos" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="log" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
         <element name="Task" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="TaskLog" positionX="-63" positionY="27" width="128" height="120"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  
 //
-//  Created by tanghaibo on 16/2/3.
+//  Created by tanghaibo on 16/2/4.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,11 +14,11 @@ import CoreData
 
 extension Task {
 
+    @NSManaged var addition: String?
+    @NSManaged var content: String?
     @NSManaged var createTime: NSDate?
     @NSManaged var estimateNUMT: NSNumber?
-    @NSManaged var actualNUMT: NSNumber?
     @NSManaged var title: String?
-    @NSManaged var content: String?
-    @NSManaged var addition: String?
+    @NSManaged var log: TaskLog?
 
 }

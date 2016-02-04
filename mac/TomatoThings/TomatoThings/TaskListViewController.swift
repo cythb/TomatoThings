@@ -10,6 +10,7 @@ import Cocoa
 
 class TaskListViewController: NSViewController, NSTextFieldDelegate {
   @IBOutlet var arrayController: NSArrayController!
+  @IBOutlet weak var tableView: NSTableView!
   
   var tnumTransformer: TaskCellTransformer = {
     let transformer = TaskCellTransformer()
@@ -103,7 +104,9 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     return (taskTitle, taskETNUM)
   }
   
-  @IBAction func onStartBtnClicked(sender: AnyObject) {
-    NSLog("w22211")
+  @IBAction func onStartBtnClicked(sender: NSButton) {
+    let row = tableView.rowForView(sender)
+    let cell = tableView.viewAtColumn(2, row: row, makeIfNecessary: true) as! NSTableCellView
+    NSLog("\(cell.objectValue)")
   }
 }

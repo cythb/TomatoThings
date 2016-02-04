@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TaskListViewController" customModule="TomatoThings" customModuleProvider="target">
             <connections>
                 <outlet property="arrayController" destination="DJb-on-DLu" id="BDb-qj-hsc"/>
+                <outlet property="tableView" destination="wXr-X4-dmr" id="Opt-MG-wRS"/>
                 <outlet property="view" destination="EfT-9d-wNQ" id="nGC-j5-Tdr"/>
             </connections>
         </customObject>
