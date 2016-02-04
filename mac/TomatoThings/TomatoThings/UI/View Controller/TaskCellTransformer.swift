@@ -22,3 +22,13 @@ class TaskCellTransformer: NSValueTransformer {
     }
   }
 }
+
+class TaskActionEnableTransformer: NSValueTransformer {
+  override class func transformedValueClass() -> AnyClass {
+    return Task.self
+  }
+  
+  override func transformedValue(value: AnyObject?) -> AnyObject? {
+    return false
+  }
+}

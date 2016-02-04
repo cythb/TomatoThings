@@ -16,6 +16,11 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     NSValueTransformer.setValueTransformer(transformer, forName: "TaskCellTransformer")
     return transformer
   }()
+  var actionEnableTransformer: TaskActionEnableTransformer = {
+    let transformer = TaskActionEnableTransformer()
+    NSValueTransformer.setValueTransformer(transformer, forName: "TaskActionEnableTransformer")
+    return transformer
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()

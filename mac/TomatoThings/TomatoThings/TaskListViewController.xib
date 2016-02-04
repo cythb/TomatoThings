@@ -167,6 +167,13 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <binding destination="nv0-IZ-02B" name="enabled" keyPath="objectValue" id="N84-EY-YRJ">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">TaskActionEnableTransformer</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -207,7 +214,7 @@
                 <constraint firstAttribute="trailing" secondItem="NJN-x2-QZM" secondAttribute="trailing" id="pR6-X5-OaL"/>
                 <constraint firstItem="NJN-x2-QZM" firstAttribute="leading" secondItem="EfT-9d-wNQ" secondAttribute="leading" id="xdc-a0-G7j"/>
             </constraints>
-            <point key="canvasLocation" x="703.5" y="743"/>
+            <point key="canvasLocation" x="347.5" y="535"/>
         </customView>
     </objects>
 </document>
