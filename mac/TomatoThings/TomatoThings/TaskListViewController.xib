@@ -157,7 +157,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="nv0-IZ-02B">
+                                            <tableCellView id="nv0-IZ-02B" customClass="TaskActionCell" customModule="TomatoThings" customModuleProvider="target">
                                                 <rect key="frame" x="383" y="1" width="68" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -171,6 +171,11 @@
                                                             <binding destination="nv0-IZ-02B" name="enabled" keyPath="objectValue" id="N84-EY-YRJ">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">TaskActionEnableTransformer</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                            <binding destination="nv0-IZ-02B" name="target" keyPath="self" id="iAG-tA-9hd">
+                                                                <dictionary key="options">
+                                                                    <string key="NSSelectorName">onStartBtnClicked:</string>
                                                                 </dictionary>
                                                             </binding>
                                                         </connections>

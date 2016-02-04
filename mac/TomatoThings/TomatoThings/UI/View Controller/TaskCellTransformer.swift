@@ -29,6 +29,6 @@ class TaskActionEnableTransformer: NSValueTransformer {
   }
   
   override func transformedValue(value: AnyObject?) -> AnyObject? {
-    return false
+    return true
   }
 }

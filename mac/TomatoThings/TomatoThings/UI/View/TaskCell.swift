@@ -7,14 +7,12 @@
 //
 
 import Cocoa
+import Foundation
 
-class TaskCell: NSView {
-    @IBOutlet weak var label: NSTextField!
-
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
-
-        // Drawing code here.
-    }
-    
+class TaskActionCell: NSTableCellView {
+  
+  // MARK: actions
+  func onStartBtnClicked(sender: AnyObject) {
+    NSLog("111")
+  }
 }

@@ -19,4 +19,22 @@ class TaskBLL: NSObject {
     let task = TaskDAL.shared().addTask(title, eNUMT: eNUMT)
     return task
   }
+  
+  /**
+   开始计时
+   
+   - parameter task: 针对的任务
+   */
+  func start(task: Task) {
+    
+  }
+  
+  /**
+   结束计时
+   
+   - parameter task: 针对的任务
+   */
+  func stop(task: Task) {
+    
+  }
 }
