@@ -144,7 +144,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn width="68" minWidth="40" maxWidth="1000" id="WGb-Bt-fy6">
+                                    <tableColumn width="67.5" minWidth="40" maxWidth="1000" id="WGb-Bt-fy6">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="动作">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -157,7 +157,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="nv0-IZ-02B" customClass="TaskActionCell" customModule="TomatoThings" customModuleProvider="target">
+                                            <tableCellView id="nv0-IZ-02B">
                                                 <rect key="frame" x="383" y="1" width="68" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -168,14 +168,10 @@
                                                             <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="onStartBtnClicked:" target="-2" id="KkN-TO-qDM"/>
                                                             <binding destination="nv0-IZ-02B" name="enabled" keyPath="objectValue" id="N84-EY-YRJ">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">TaskActionEnableTransformer</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                            <binding destination="nv0-IZ-02B" name="target" keyPath="self" id="iAG-tA-9hd">
-                                                                <dictionary key="options">
-                                                                    <string key="NSSelectorName">onStartBtnClicked:</string>
                                                                 </dictionary>
                                                             </binding>
                                                         </connections>
@@ -191,6 +187,7 @@
                                 </tableColumns>
                                 <connections>
                                     <binding destination="DJb-on-DLu" name="content" keyPath="arrangedObjects" id="pmd-hD-0Ot"/>
+                                    <outlet property="delegate" destination="-2" id="223-0v-3Qe"/>
                                 </connections>
                             </tableView>
                         </subviews>

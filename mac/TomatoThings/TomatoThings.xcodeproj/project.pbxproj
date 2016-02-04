@@ -25,7 +25,6 @@
 		50E7567A1C61AC75007A68CB /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756791C61AC75007A68CB /* CoreDataHelper.swift */; };
 		50E756811C61AE66007A68CB /* CoreDataHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756801C61AE66007A68CB /* CoreDataHelperTests.swift */; };
 		50E756851C61D8ED007A68CB /* TaskBLL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756841C61D8ED007A68CB /* TaskBLL.swift */; };
-		50E756871C61EAE7007A68CB /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756861C61EAE7007A68CB /* TaskCell.swift */; };
 		50E756891C61F94A007A68CB /* TaskCellTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E756881C61F94A007A68CB /* TaskCellTransformer.swift */; };
 		9183CE007C0268FABE41D5E9 /* Pods_TomatoThings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0353AA30CCFF5CDC9FEEE9D0 /* Pods_TomatoThings.framework */; };
 /* End PBXBuildFile section */
@@ -65,7 +64,6 @@
 		50E756791C61AC75007A68CB /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		50E756801C61AE66007A68CB /* CoreDataHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelperTests.swift; sourceTree = "<group>"; };
 		50E756841C61D8ED007A68CB /* TaskBLL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskBLL.swift; sourceTree = "<group>"; };
-		50E756861C61EAE7007A68CB /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		50E756881C61F94A007A68CB /* TaskCellTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellTransformer.swift; sourceTree = "<group>"; };
 		6CE3D0F2A8A16BE0916BB134 /* Pods-TomatoThings.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomatoThings.release.xcconfig"; path = "Pods/Target Support Files/Pods-TomatoThings/Pods-TomatoThings.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,7 +172,6 @@
 		50E7566C1C61A3A1007A68CB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				50E756861C61EAE7007A68CB /* TaskCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -386,7 +383,6 @@
 				50D1AAB81C32707900E3D703 /* AppDelegate.swift in Sources */,
 				50E756761C61A7EB007A68CB /* TaskDAL.swift in Sources */,
 				50E756721C61A77F007A68CB /* Task+CoreDataProperties.swift in Sources */,
-				50E756871C61EAE7007A68CB /* TaskCell.swift in Sources */,
 				50E7567A1C61AC75007A68CB /* CoreDataHelper.swift in Sources */,
 				50E756731C61A77F007A68CB /* Task.swift in Sources */,
 				50E756891C61F94A007A68CB /* TaskCellTransformer.swift in Sources */,

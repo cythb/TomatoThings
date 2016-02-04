@@ -103,5 +103,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     return (taskTitle, taskETNUM)
   }
   
-
+  @IBAction func onStartBtnClicked(sender: AnyObject) {
+    NSLog("w22211")
+  }
 }
