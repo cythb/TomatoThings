@@ -67,7 +67,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     if nil != range {
       taskTitle = text.substringToIndex(range!.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
     }
-
+    
     while range != nil && range!.startIndex != range!.endIndex {
       let temp = text.substringFromIndex(range!.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
       let components = temp.componentsSeparatedByString(" ")
