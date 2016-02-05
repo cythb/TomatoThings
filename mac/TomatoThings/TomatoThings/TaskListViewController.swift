@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ReactiveCocoa
 
 class TaskListViewController: NSViewController, NSTextFieldDelegate {
   @IBOutlet var arrayController: NSArrayController!
@@ -20,6 +21,11 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
   var actionEnableTransformer: TaskActionEnableTransformer = {
     let transformer = TaskActionEnableTransformer()
     NSValueTransformer.setValueTransformer(transformer, forName: "TaskActionEnableTransformer")
+    return transformer
+  }()
+  var actionNameTransformer: TaskActionNameTransformer = {
+    let transformer = TaskActionNameTransformer()
+    NSValueTransformer.setValueTransformer(transformer, forName: "TaskActionNameTransformer")
     return transformer
   }()
   
@@ -107,8 +113,16 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
   @IBAction func onStartBtnClicked(sender: NSButton) {
     let row = tableView.rowForView(sender)
     let cell = tableView.viewAtColumn(2, row: row, makeIfNecessary: true) as! NSTableCellView
-    if let task = cell.objectValue as? Task {
-      TaskBLL.shared().start(task)
+    guard let task = cell.objectValue as? Task else {
+      return
     }
+    
+    if nil == TaskBLL.shared().progressingTask.value {
+      TaskBLL.shared().start(task)
+    }else if TaskBLL.shared().progressingTask.value == task {
+      TaskBLL.shared().stop()
+    }
+    
+    tableView.reloadData()
   }
 }

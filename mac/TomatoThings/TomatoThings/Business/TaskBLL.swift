@@ -23,7 +23,7 @@ class TaskBLL: NSObject {
     f.dateFormat = "mm:ss"
     return f
   }()
-  var progressingTask: Task?
+  var progressingTask = MutableProperty<Task?>(nil)
   
   let remainTimeText = MutableProperty<String>("25:00")
   
@@ -45,7 +45,7 @@ class TaskBLL: NSObject {
       return
     }
     
-    progressingTask = task
+    progressingTask.value = task
     
     startDate = NSDate()
     timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimerFire:", userInfo: nil, repeats: true)
@@ -59,7 +59,8 @@ class TaskBLL: NSObject {
   func stop() {
     timer.invalidate()
     startDate = nil
-    progressingTask = nil
+    progressingTask.value = nil
+    remainTimeText.value = "25:00"
   }
   
   // MARK: actions

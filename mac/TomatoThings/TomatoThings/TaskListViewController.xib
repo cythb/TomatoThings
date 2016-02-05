@@ -170,9 +170,14 @@
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="onStartBtnClicked:" target="-2" id="KkN-TO-qDM"/>
-                                                            <binding destination="nv0-IZ-02B" name="enabled" keyPath="objectValue" id="N84-EY-YRJ">
+                                                            <binding destination="nv0-IZ-02B" name="enabled" keyPath="objectValue" id="ZtG-1e-vot">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">TaskActionEnableTransformer</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                            <binding destination="nv0-IZ-02B" name="title" keyPath="objectValue" id="9tK-Sb-Xlk">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">TaskActionNameTransformer</string>
                                                                 </dictionary>
                                                             </binding>
                                                         </connections>

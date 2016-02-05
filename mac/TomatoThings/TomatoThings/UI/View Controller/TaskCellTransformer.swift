@@ -34,16 +34,33 @@ class TaskActionEnableTransformer: NSValueTransformer {
   
   override func transformedValue(value: AnyObject?) -> AnyObject? {
     guard let task = value as? Task else {
-      return true
+      return false
     }
-    guard TaskBLL.shared().progressingTask != nil else {
+    guard nil != TaskBLL.shared().progressingTask.value else {
       return true
     }
     
-    if TaskBLL.shared().progressingTask == task {
-      return true
+    return task == TaskBLL.shared().progressingTask.value
+  }
+}
+
+class TaskActionNameTransformer: NSValueTransformer {
+  override class func transformedValueClass() -> AnyClass {
+    return Task.self
+  }
+  
+  override func transformedValue(value: AnyObject?) -> AnyObject? {
+    guard let task = value as? Task else {
+      return "开始"
+    }
+    guard nil != TaskBLL.shared().progressingTask.value else {
+      return "开始"
+    }
+    
+    if task == TaskBLL.shared().progressingTask.value {
+      return "放弃"
     }else {
-      return false
+      return "开始"
     }
   }
 }
