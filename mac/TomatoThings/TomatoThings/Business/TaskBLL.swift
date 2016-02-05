@@ -8,6 +8,7 @@
 
 import Cocoa
 import ReactiveCocoa
+import Result
 
 class TaskBLL: NSObject {
   static let gShared = TaskBLL()
@@ -23,9 +24,10 @@ class TaskBLL: NSObject {
     f.dateFormat = "mm:ss"
     return f
   }()
-  var progressingTask = MutableProperty<Task?>(nil)
   
+  let progressingTask = MutableProperty<Task?>(nil)
   let remainTimeText = MutableProperty<String>("25:00")
+  let (taskSignal, taskObserver) = Signal<Int, NoError>.pipe()
   
   override init() {
   }
@@ -71,6 +73,7 @@ class TaskBLL: NSObject {
     let log = TaskLog.taskLog(task)
     if finish {
       log.completeTomatos = NSNumber(integer: log.completeTomatos!.integerValue+1)
+      print("一个番茄结束")
     } else {
       log.incompleteTomatos = NSNumber(integer: log.incompleteTomatos!.integerValue+1)
     }
@@ -91,8 +94,8 @@ class TaskBLL: NSObject {
     let date = NSDate()
     let diffTimeInterval = 25 * 60 - (date.timeIntervalSince1970 - startDate.timeIntervalSince1970)
     guard diffTimeInterval > 0 else {
-      print("一个番茄结束")
       self.stop(true)
+      taskObserver.sendNext(1)
       return
     }
     

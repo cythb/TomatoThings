@@ -31,6 +31,12 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
   
   override func viewDidLoad() { 
     super.viewDidLoad()
+    
+    TaskBLL.shared().taskSignal.observeNext { [weak self](_) -> () in
+      self?.tableView.reloadData()
+      
+      // TODO:弹出视图：休息／继续
+    }
   }
   
   // MARK: - NSTextFieldDelegate
