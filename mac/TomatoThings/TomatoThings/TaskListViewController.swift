@@ -107,6 +107,8 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
   @IBAction func onStartBtnClicked(sender: NSButton) {
     let row = tableView.rowForView(sender)
     let cell = tableView.viewAtColumn(2, row: row, makeIfNecessary: true) as! NSTableCellView
-    NSLog("\(cell.objectValue)")
+    if let task = cell.objectValue as? Task {
+      TaskBLL.shared().start(task)
+    }
   }
 }

@@ -17,6 +17,10 @@
 		504EC9731C58665000895FC8 /* BoxListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504EC9711C58665000895FC8 /* BoxListViewController.xib */; };
 		504EC9761C58665A00895FC8 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EC9741C58665A00895FC8 /* TaskListViewController.swift */; };
 		504EC9771C58665A00895FC8 /* TaskListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504EC9751C58665A00895FC8 /* TaskListViewController.xib */; };
+		505429961C64697100E92E6B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505429941C64697100E92E6B /* ReactiveCocoa.framework */; };
+		505429971C64697100E92E6B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505429951C64697100E92E6B /* Result.framework */; };
+		505429991C646C8100E92E6B /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505429941C64697100E92E6B /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5054299A1C646C8100E92E6B /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505429951C64697100E92E6B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50D1AAB81C32707900E3D703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1AAB71C32707900E3D703 /* AppDelegate.swift */; };
 		50D1AABB1C32707900E3D703 /* TomatoThings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50D1AAB91C32707900E3D703 /* TomatoThings.xcdatamodeld */; };
 		50D1AABD1C32707900E3D703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50D1AABC1C32707900E3D703 /* Assets.xcassets */; };
@@ -41,6 +45,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		505429981C646C6E00E92E6B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				505429991C646C8100E92E6B /* ReactiveCocoa.framework in CopyFiles */,
+				5054299A1C646C8100E92E6B /* Result.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0353AA30CCFF5CDC9FEEE9D0 /* Pods_TomatoThings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TomatoThings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26A44BE43058F509D7598C13 /* Pods-TomatoThings.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomatoThings.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TomatoThings/Pods-TomatoThings.debug.xcconfig"; sourceTree = "<group>"; };
@@ -54,6 +72,8 @@
 		504EC9711C58665000895FC8 /* BoxListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BoxListViewController.xib; path = ../../BoxListViewController.xib; sourceTree = "<group>"; };
 		504EC9741C58665A00895FC8 /* TaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskListViewController.swift; path = ../../TaskListViewController.swift; sourceTree = "<group>"; };
 		504EC9751C58665A00895FC8 /* TaskListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskListViewController.xib; path = ../../TaskListViewController.xib; sourceTree = "<group>"; };
+		505429941C64697100E92E6B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../../Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		505429951C64697100E92E6B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../../Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		50D1AAB41C32707900E3D703 /* TomatoThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D1AAB71C32707900E3D703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50D1AABA1C32707900E3D703 /* TomatoThings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoThings.xcdatamodel; sourceTree = "<group>"; };
@@ -77,7 +97,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505429971C64697100E92E6B /* Result.framework in Frameworks */,
 				9183CE007C0268FABE41D5E9 /* Pods_TomatoThings.framework in Frameworks */,
+				505429961C64697100E92E6B /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +116,8 @@
 		4FA434711769903E3C1F186D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				505429941C64697100E92E6B /* ReactiveCocoa.framework */,
+				505429951C64697100E92E6B /* Result.framework */,
 				0353AA30CCFF5CDC9FEEE9D0 /* Pods_TomatoThings.framework */,
 			);
 			name = Frameworks;
@@ -242,6 +266,7 @@
 				50D1AAB21C32707900E3D703 /* Resources */,
 				1AE180B8357F81DD32573CFB /* Embed Pods Frameworks */,
 				0D756561E366A4C2B0ABD848 /* Copy Pods Resources */,
+				505429981C646C6E00E92E6B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -518,8 +543,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Carthage/Build/Mac",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = TomatoThings/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks $(SRCROOT)/../../Carthage/Build/Mac";
 				PRODUCT_BUNDLE_IDENTIFIER = top.ioslearn.TomatoThings;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -532,6 +561,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Carthage/Build/Mac",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = TomatoThings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = top.ioslearn.TomatoThings;
