@@ -29,7 +29,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     return transformer
   }()
   
-  override func viewDidLoad() {
+  override func viewDidLoad() { 
     super.viewDidLoad()
   }
   
