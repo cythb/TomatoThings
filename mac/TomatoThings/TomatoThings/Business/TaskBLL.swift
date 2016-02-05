@@ -49,6 +49,8 @@ class TaskBLL: NSObject {
     
     startDate = NSDate()
     timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimerFire:", userInfo: nil, repeats: true)
+    
+    TaskLog.taskLog(task)
   }
   
   /**
@@ -56,11 +58,32 @@ class TaskBLL: NSObject {
    
    - parameter task: 针对的任务
    */
-  func stop() {
+  func stop(finish: Bool = false) {
+    guard let task = progressingTask.value else {
+      return
+    }
+    
     timer.invalidate()
     startDate = nil
     progressingTask.value = nil
     remainTimeText.value = "25:00"
+    
+    let log = TaskLog.taskLog(task)
+    if finish {
+      log.completeTomatos = NSNumber(integer: log.completeTomatos!.integerValue+1)
+    } else {
+      log.incompleteTomatos = NSNumber(integer: log.incompleteTomatos!.integerValue+1)
+    }
+  }
+  
+  /**
+   完成任务
+   
+   - parameter task: task
+   */
+  func finish(task: Task) {
+    let log = TaskLog.taskLog(task)
+    log.finishDate = NSDate()
   }
   
   // MARK: actions
@@ -69,7 +92,7 @@ class TaskBLL: NSObject {
     let diffTimeInterval = 25 * 60 - (date.timeIntervalSince1970 - startDate.timeIntervalSince1970)
     guard diffTimeInterval > 0 else {
       print("一个番茄结束")
-      self.stop()
+      self.stop(true)
       return
     }
     

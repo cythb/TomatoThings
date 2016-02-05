@@ -12,6 +12,27 @@ import CoreData
 
 class TaskLog: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+  class func taskLog(task: Task) -> TaskLog {
+    // search tasklog with task
+    let fetchRequest = NSFetchRequest(entityName: "TaskLog")
+    fetchRequest.fetchLimit = 1
+    fetchRequest.predicate = NSPredicate(format: "task == %@", task)
+    
+    var taskLog: TaskLog!
+    
+    do {
+      let taskLogs = try CoreDataHelper.managedObjectContext.executeFetchRequest(fetchRequest) as! [TaskLog]
+      taskLog = taskLogs.first
+    } catch {
+    }
+    
+    if nil == taskLog {
+      taskLog = CoreDataHelper.createEntity("TaskLog") as! TaskLog
+      taskLog.task = task
+      taskLog.startDate = NSDate()
+    }
+    
+    return taskLog
+  }
 
 }
