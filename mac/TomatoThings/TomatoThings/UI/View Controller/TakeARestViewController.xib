@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TakeARestViewController" customModule="TomatoThings" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="140"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6tT-kf-Z8b">
+                    <rect key="frame" x="272" y="23" width="66" height="32"/>
+                    <buttonCell key="cell" type="push" title="休息" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5fP-HW-8dQ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onRestBtnClicked:" target="-2" id="AsX-yy-8ln"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="huz-Q9-KFp">
+                    <rect key="frame" x="18" y="93" width="316" height="17"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="恭喜您完成了一个番茄，休息一会儿，再继续努力吧。" id="NLZ-mQ-9ua">
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rFA-eS-FxB">
+                    <rect key="frame" x="14" y="23" width="131" height="32"/>
+                    <buttonCell key="cell" type="push" title="还有点活，继续" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Orm-9u-gvC">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onContinueBtnClicked:" target="-2" id="KF6-RN-vm2"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="rFA-eS-FxB" secondAttribute="bottom" constant="30" id="3Bj-im-ddG"/>
+                <constraint firstAttribute="trailing" secondItem="6tT-kf-Z8b" secondAttribute="trailing" constant="20" id="MBJ-ke-vDu"/>
+                <constraint firstItem="rFA-eS-FxB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="ekb-1v-2JY"/>
+                <constraint firstAttribute="bottom" secondItem="6tT-kf-Z8b" secondAttribute="bottom" constant="30" id="nxh-Gl-1Ed"/>
+                <constraint firstItem="huz-Q9-KFp" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="pfO-ev-Ow5"/>
+                <constraint firstAttribute="trailing" secondItem="huz-Q9-KFp" secondAttribute="trailing" constant="20" id="qtp-oH-Hxl"/>
+                <constraint firstItem="huz-Q9-KFp" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="30" id="uNI-gK-MtP"/>
+            </constraints>
+            <point key="canvasLocation" x="514" y="291"/>
+        </customView>
+    </objects>
+</document>

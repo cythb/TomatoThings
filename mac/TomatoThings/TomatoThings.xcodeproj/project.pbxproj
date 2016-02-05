@@ -21,6 +21,8 @@
 		505429971C64697100E92E6B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505429951C64697100E92E6B /* Result.framework */; };
 		505429991C646C8100E92E6B /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505429941C64697100E92E6B /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5054299A1C646C8100E92E6B /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505429951C64697100E92E6B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5099C9701C649875005236A4 /* TakeARestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099C96E1C649875005236A4 /* TakeARestViewController.swift */; };
+		5099C9711C649875005236A4 /* TakeARestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5099C96F1C649875005236A4 /* TakeARestViewController.xib */; };
 		50D1AAB81C32707900E3D703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1AAB71C32707900E3D703 /* AppDelegate.swift */; };
 		50D1AABB1C32707900E3D703 /* TomatoThings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50D1AAB91C32707900E3D703 /* TomatoThings.xcdatamodeld */; };
 		50D1AABD1C32707900E3D703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50D1AABC1C32707900E3D703 /* Assets.xcassets */; };
@@ -74,6 +76,8 @@
 		504EC9751C58665A00895FC8 /* TaskListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskListViewController.xib; path = ../../TaskListViewController.xib; sourceTree = "<group>"; };
 		505429941C64697100E92E6B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../../Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		505429951C64697100E92E6B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../../Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		5099C96E1C649875005236A4 /* TakeARestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeARestViewController.swift; sourceTree = "<group>"; };
+		5099C96F1C649875005236A4 /* TakeARestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakeARestViewController.xib; sourceTree = "<group>"; };
 		50D1AAB41C32707900E3D703 /* TomatoThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D1AAB71C32707900E3D703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50D1AABA1C32707900E3D703 /* TomatoThings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoThings.xcdatamodel; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 				504EC9741C58665A00895FC8 /* TaskListViewController.swift */,
 				504EC9751C58665A00895FC8 /* TaskListViewController.xib */,
 				50E756881C61F94A007A68CB /* TaskCellTransformer.swift */,
+				5099C96E1C649875005236A4 /* TakeARestViewController.swift */,
+				5099C96F1C649875005236A4 /* TakeARestViewController.xib */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 				504EC9731C58665000895FC8 /* BoxListViewController.xib in Resources */,
 				504EC9771C58665A00895FC8 /* TaskListViewController.xib in Resources */,
 				50D1AABD1C32707900E3D703 /* Assets.xcassets in Resources */,
+				5099C9711C649875005236A4 /* TakeARestViewController.xib in Resources */,
 				50D1AAC01C32707900E3D703 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +417,7 @@
 				504EC96B1C58625900895FC8 /* MainViewController.swift in Sources */,
 				50E756851C61D8ED007A68CB /* TaskBLL.swift in Sources */,
 				50D1AABB1C32707900E3D703 /* TomatoThings.xcdatamodeld in Sources */,
+				5099C9701C649875005236A4 /* TakeARestViewController.swift in Sources */,
 				504AEA4D1C635409005950FD /* TaskLog+CoreDataProperties.swift in Sources */,
 				504AEA501C6354D4005950FD /* Task.swift in Sources */,
 				504EC9721C58665000895FC8 /* BoxListViewController.swift in Sources */,
