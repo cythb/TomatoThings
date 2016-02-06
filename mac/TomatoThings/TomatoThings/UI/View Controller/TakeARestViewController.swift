@@ -7,9 +7,11 @@
 //
 
 import Cocoa
+import ReactiveCocoa
 
 class TakeARestViewController: NSViewController {
   var task: Task
+  var disposable: Disposable?
   
   init?(task: Task) {
     self.task = task
@@ -26,7 +28,7 @@ class TakeARestViewController: NSViewController {
     
     self.title = "休息一下:]"
     
-    TaskBLL.shared().taskSignal.observeNext {[unowned self] (task, type) -> () in
+    disposable = TaskBLL.shared().taskSignal.observeNext {[unowned self] (task, type) -> () in
       switch type {
       case .StartRest:
         self.enabelButtons(self.view, enable: false)
@@ -38,6 +40,12 @@ class TakeARestViewController: NSViewController {
         break
       }
         
+    }
+  }
+  
+  deinit {
+    if let d = disposable {
+      d.dispose()
     }
   }
  

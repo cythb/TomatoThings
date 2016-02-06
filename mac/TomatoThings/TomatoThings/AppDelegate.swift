@@ -18,6 +18,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   func applicationDidFinishLaunching(aNotification: NSNotification) {
     setupStatusItem()
+    
+    // 初始化休息次数
+    TaskBLL.shared().resetRestTimes()
+    
   }
   
   func applicationWillTerminate(aNotification: NSNotification) {

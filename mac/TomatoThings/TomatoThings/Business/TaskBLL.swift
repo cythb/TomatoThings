@@ -51,6 +51,12 @@ class TaskBLL: NSObject {
     startDate = NSDate()
     timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimerFire:", userInfo: nil, repeats: true)
   }
+  private func invalidateTimer() {
+    timer.invalidate()
+    startDate = nil
+    remainTimeText.value = "25:00"
+  }
+  
   // MARK: Task
   /**
    开始计时
@@ -102,10 +108,9 @@ class TaskBLL: NSObject {
     currentTaskLog = nil
     
     // 收尾工作
-    timer.invalidate()
-    startDate = nil
     progressingTask.value = nil
-    remainTimeText.value = "25:00"
+    
+    invalidateTimer()
   }
   
   /**
@@ -121,12 +126,42 @@ class TaskBLL: NSObject {
   }
   
   // MARK: - Rest
+  func restTimeKey() -> String {
+    let df = NSDateFormatter()
+    df.dateFormat = "yyyy-MM-dd"
+    let todayKey = df.stringFromDate(NSDate())
+    return todayKey
+  }
+  
+  func resetRestTimes() {
+    let times = NSUserDefaults.standardUserDefaults().integerForKey(restTimeKey())
+    if times > 0 {
+      setRestTimes(0)
+    }
+  }
+  
+  func restTimes() -> Int {
+    let times = NSUserDefaults.standardUserDefaults().integerForKey(restTimeKey())
+    return times
+  }
+  
+  func setRestTimes(times: Int) {
+    NSUserDefaults.standardUserDefaults().setInteger(times, forKey: restTimeKey())
+  }
+  
   // 开始休息
   func startRest(task: Task) {
     let restLog = RestLog(aTask: task)
     restLog.startDate = NSDate().timeIntervalSince1970
+  
+    let currentRestTimes = restTimes() + 1
+    setRestTimes(currentRestTimes)
 //    restLog.fixedDuration = 5 * 60
-    restLog.fixedDuration = 5
+    if currentRestTimes%4 == 0 {
+      restLog.fixedDuration = 10
+    }else {
+      restLog.fixedDuration = 5
+    }
     
     currentRestLog = restLog
     
@@ -143,6 +178,8 @@ class TaskBLL: NSObject {
     currentRestLog = nil
     
     taskObserver.sendNext((restLog.task!, .EndRest))
+    
+    invalidateTimer()
   }
   
   // MARK: - actions
