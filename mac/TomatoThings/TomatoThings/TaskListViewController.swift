@@ -35,7 +35,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     TaskBLL.shared().taskSignal.observeNext { [weak self](_) -> () in
       self?.tableView.reloadData()
       
-      // TODO:弹出视图：休息／继续
+      // 弹出视图：休息／继续
       let restVC = TakeARestViewController()
       self?.presentViewControllerAsModalWindow(restVC)
     }

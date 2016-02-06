@@ -19,12 +19,22 @@ class TakeARestViewController: NSViewController {
  
   // MARK: - actions
   @IBAction func onContinueBtnClicked(sender: AnyObject) {
-    
     self.dismissController(self)
+    
+    // 继续干一个番茄
+    TaskBLL.shared().start(task)
   }
   
   @IBAction func onRestBtnClicked(sender: AnyObject) {
+    // TODO: 所有按钮不可用
+    // TODO: 休息一下
+    // 4 5 10 20 
+  }
+  @IBAction func onFinishBtnClicked(sender: AnyObject) {
+    guard task != nil else {
+      return
+    }
     
-    self.dismissController(self)
+    TaskBLL.shared().finish(task)
   }
 }

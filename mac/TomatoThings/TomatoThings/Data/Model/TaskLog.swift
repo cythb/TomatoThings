@@ -29,7 +29,7 @@ class TaskLog: NSManagedObject {
     if nil == taskLog {
       taskLog = CoreDataHelper.createEntity("TaskLog") as! TaskLog
       taskLog.task = task
-      taskLog.startDate = NSDate()
+      taskLog.startDate = NSDate().timeIntervalSince1970
     }
     
     return taskLog

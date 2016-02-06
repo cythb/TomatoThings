@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		504AEA441C62F0AE005950FD /* TaskListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504AEA431C62F0AE005950FD /* TaskListViewControllerTests.swift */; };
-		504AEA4B1C635409005950FD /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504AEA481C635409005950FD /* Task+CoreDataProperties.swift */; };
-		504AEA4D1C635409005950FD /* TaskLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504AEA4A1C635409005950FD /* TaskLog+CoreDataProperties.swift */; };
-		504AEA501C6354D4005950FD /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504AEA4E1C6354D4005950FD /* Task.swift */; };
-		504AEA511C6354D4005950FD /* TaskLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504AEA4F1C6354D4005950FD /* TaskLog.swift */; };
 		504EC96B1C58625900895FC8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EC96A1C58625900895FC8 /* MainViewController.swift */; };
 		504EC9721C58665000895FC8 /* BoxListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EC9701C58665000895FC8 /* BoxListViewController.swift */; };
 		504EC9731C58665000895FC8 /* BoxListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504EC9711C58665000895FC8 /* BoxListViewController.xib */; };
@@ -23,6 +19,12 @@
 		5054299A1C646C8100E92E6B /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505429951C64697100E92E6B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5099C9701C649875005236A4 /* TakeARestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099C96E1C649875005236A4 /* TakeARestViewController.swift */; };
 		5099C9711C649875005236A4 /* TakeARestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5099C96F1C649875005236A4 /* TakeARestViewController.xib */; };
+		50CE61291C657F5700781C3D /* RestLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE61231C657F5700781C3D /* RestLog.swift */; };
+		50CE612A1C657F5700781C3D /* RestLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE61241C657F5700781C3D /* RestLog+CoreDataProperties.swift */; };
+		50CE612B1C657F5700781C3D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE61251C657F5700781C3D /* Task.swift */; };
+		50CE612C1C657F5700781C3D /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE61261C657F5700781C3D /* Task+CoreDataProperties.swift */; };
+		50CE612D1C657F5700781C3D /* TaskLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE61271C657F5700781C3D /* TaskLog.swift */; };
+		50CE612E1C657F5700781C3D /* TaskLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE61281C657F5700781C3D /* TaskLog+CoreDataProperties.swift */; };
 		50D1AAB81C32707900E3D703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D1AAB71C32707900E3D703 /* AppDelegate.swift */; };
 		50D1AABB1C32707900E3D703 /* TomatoThings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50D1AAB91C32707900E3D703 /* TomatoThings.xcdatamodeld */; };
 		50D1AABD1C32707900E3D703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50D1AABC1C32707900E3D703 /* Assets.xcassets */; };
@@ -65,10 +67,6 @@
 		0353AA30CCFF5CDC9FEEE9D0 /* Pods_TomatoThings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TomatoThings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26A44BE43058F509D7598C13 /* Pods-TomatoThings.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomatoThings.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TomatoThings/Pods-TomatoThings.debug.xcconfig"; sourceTree = "<group>"; };
 		504AEA431C62F0AE005950FD /* TaskListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListViewControllerTests.swift; sourceTree = "<group>"; };
-		504AEA481C635409005950FD /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		504AEA4A1C635409005950FD /* TaskLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		504AEA4E1C6354D4005950FD /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		504AEA4F1C6354D4005950FD /* TaskLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskLog.swift; sourceTree = "<group>"; };
 		504EC96A1C58625900895FC8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../MainViewController.swift; sourceTree = "<group>"; };
 		504EC9701C58665000895FC8 /* BoxListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoxListViewController.swift; path = ../../BoxListViewController.swift; sourceTree = "<group>"; };
 		504EC9711C58665000895FC8 /* BoxListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BoxListViewController.xib; path = ../../BoxListViewController.xib; sourceTree = "<group>"; };
@@ -78,6 +76,12 @@
 		505429951C64697100E92E6B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../../Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		5099C96E1C649875005236A4 /* TakeARestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeARestViewController.swift; sourceTree = "<group>"; };
 		5099C96F1C649875005236A4 /* TakeARestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakeARestViewController.xib; sourceTree = "<group>"; };
+		50CE61231C657F5700781C3D /* RestLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestLog.swift; sourceTree = "<group>"; };
+		50CE61241C657F5700781C3D /* RestLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		50CE61251C657F5700781C3D /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		50CE61261C657F5700781C3D /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		50CE61271C657F5700781C3D /* TaskLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskLog.swift; sourceTree = "<group>"; };
+		50CE61281C657F5700781C3D /* TaskLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		50D1AAB41C32707900E3D703 /* TomatoThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D1AAB71C32707900E3D703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50D1AABA1C32707900E3D703 /* TomatoThings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoThings.xcdatamodel; sourceTree = "<group>"; };
@@ -233,10 +237,12 @@
 		50E7566F1C61A77F007A68CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				504AEA4E1C6354D4005950FD /* Task.swift */,
-				504AEA4F1C6354D4005950FD /* TaskLog.swift */,
-				504AEA481C635409005950FD /* Task+CoreDataProperties.swift */,
-				504AEA4A1C635409005950FD /* TaskLog+CoreDataProperties.swift */,
+				50CE61231C657F5700781C3D /* RestLog.swift */,
+				50CE61241C657F5700781C3D /* RestLog+CoreDataProperties.swift */,
+				50CE61251C657F5700781C3D /* Task.swift */,
+				50CE61261C657F5700781C3D /* Task+CoreDataProperties.swift */,
+				50CE61271C657F5700781C3D /* TaskLog.swift */,
+				50CE61281C657F5700781C3D /* TaskLog+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,15 +424,17 @@
 				50E756851C61D8ED007A68CB /* TaskBLL.swift in Sources */,
 				50D1AABB1C32707900E3D703 /* TomatoThings.xcdatamodeld in Sources */,
 				5099C9701C649875005236A4 /* TakeARestViewController.swift in Sources */,
-				504AEA4D1C635409005950FD /* TaskLog+CoreDataProperties.swift in Sources */,
-				504AEA501C6354D4005950FD /* Task.swift in Sources */,
+				50CE612C1C657F5700781C3D /* Task+CoreDataProperties.swift in Sources */,
+				50CE612D1C657F5700781C3D /* TaskLog.swift in Sources */,
+				50CE612E1C657F5700781C3D /* TaskLog+CoreDataProperties.swift in Sources */,
+				50CE612A1C657F5700781C3D /* RestLog+CoreDataProperties.swift in Sources */,
 				504EC9721C58665000895FC8 /* BoxListViewController.swift in Sources */,
-				504AEA4B1C635409005950FD /* Task+CoreDataProperties.swift in Sources */,
 				50D1AAB81C32707900E3D703 /* AppDelegate.swift in Sources */,
 				50E756761C61A7EB007A68CB /* TaskDAL.swift in Sources */,
+				50CE612B1C657F5700781C3D /* Task.swift in Sources */,
 				50E7567A1C61AC75007A68CB /* CoreDataHelper.swift in Sources */,
 				50E756891C61F94A007A68CB /* TaskCellTransformer.swift in Sources */,
-				504AEA511C6354D4005950FD /* TaskLog.swift in Sources */,
+				50CE61291C657F5700781C3D /* RestLog.swift in Sources */,
 				504EC9761C58665A00895FC8 /* TaskListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

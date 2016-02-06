@@ -1,5 +1,5 @@
 //
-//  TaskLog+CoreDataProperties.swift
+//  RestLog+CoreDataProperties.swift
 //  
 //
 //  Created by tanghaibo on 16/2/6.
@@ -12,9 +12,10 @@
 import Foundation
 import CoreData
 
-extension TaskLog {
+extension RestLog {
 
-    @NSManaged var finishDate: NSTimeInterval
+    @NSManaged var endDate: NSTimeInterval
+    @NSManaged var fixedDuration: Double
     @NSManaged var startDate: NSTimeInterval
     @NSManaged var task: Task?
 

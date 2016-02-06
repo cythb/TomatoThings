@@ -18,11 +18,7 @@ class TaskCellTransformer: NSValueTransformer {
     if task === nil {
       return "NAN"
     } else {
-      if let tomatos = task!.log?.completeTomatos?.integerValue {
-        return "\(tomatos)/\(task!.estimateNUMT!.integerValue)"
-      }else {
-        return "0/\(task!.estimateNUMT!.integerValue)"
-      }
+      return "\(task!.completeTomatos)/\(task!.estimateNUMT)"
     }
   }
 }

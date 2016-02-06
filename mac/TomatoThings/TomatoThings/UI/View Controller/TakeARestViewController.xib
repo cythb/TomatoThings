@@ -16,6 +16,25 @@
             <rect key="frame" x="0.0" y="0.0" width="352" height="140"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="vsa-bP-ReH">
+                    <rect key="frame" x="139" y="30" width="139" height="21"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wmh-Bx-ZAW">
+                            <rect key="frame" x="36" y="-7" width="66" height="32"/>
+                            <buttonCell key="cell" type="push" title="完成" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B0n-lT-aHD">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" size="13" name=".PingFangSC-Regular"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onFinishBtnClicked:" target="-2" id="niA-1r-8mm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Wmh-Bx-ZAW" firstAttribute="centerX" secondItem="vsa-bP-ReH" secondAttribute="centerX" id="AIM-06-jSV"/>
+                        <constraint firstItem="Wmh-Bx-ZAW" firstAttribute="centerY" secondItem="vsa-bP-ReH" secondAttribute="centerY" id="qxR-f7-14F"/>
+                    </constraints>
+                </customView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6tT-kf-Z8b">
                     <rect key="frame" x="272" y="23" width="66" height="32"/>
                     <buttonCell key="cell" type="push" title="休息" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5fP-HW-8dQ">
@@ -47,7 +66,11 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="rFA-eS-FxB" secondAttribute="bottom" constant="30" id="3Bj-im-ddG"/>
+                <constraint firstItem="vsa-bP-ReH" firstAttribute="bottom" secondItem="rFA-eS-FxB" secondAttribute="bottom" id="JtB-kc-2gT"/>
+                <constraint firstItem="6tT-kf-Z8b" firstAttribute="leading" secondItem="vsa-bP-ReH" secondAttribute="trailing" id="LZ1-uU-Ess"/>
                 <constraint firstAttribute="trailing" secondItem="6tT-kf-Z8b" secondAttribute="trailing" constant="20" id="MBJ-ke-vDu"/>
+                <constraint firstItem="vsa-bP-ReH" firstAttribute="leading" secondItem="rFA-eS-FxB" secondAttribute="trailing" id="UaA-Wt-QAb"/>
+                <constraint firstItem="vsa-bP-ReH" firstAttribute="top" secondItem="rFA-eS-FxB" secondAttribute="top" id="Z8X-c9-HOh"/>
                 <constraint firstItem="rFA-eS-FxB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="ekb-1v-2JY"/>
                 <constraint firstAttribute="bottom" secondItem="6tT-kf-Z8b" secondAttribute="bottom" constant="30" id="nxh-Gl-1Ed"/>
                 <constraint firstItem="huz-Q9-KFp" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="pfO-ev-Ow5"/>

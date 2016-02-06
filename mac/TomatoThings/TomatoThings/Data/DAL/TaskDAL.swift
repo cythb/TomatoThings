@@ -35,7 +35,7 @@ class TaskDAL: NSObject {
   func addTask(title: String, eNUMT: Int16) -> Task? {
     let task = CoreDataHelper.createEntity("Task") as! Task
     task.title = title
-    task.estimateNUMT = NSNumber(int: Int32(eNUMT) )
+    task.estimateNUMT = eNUMT
     return task
   }
   
