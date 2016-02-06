@@ -5,6 +5,8 @@
 //  Created by tanghaibo on 15/12/29.
 //  Copyright © 2015年 tanghaibo. All rights reserved.
 //
+//  TODO: 1. 按顺序显示任务
+//  TODO: 2. 完成的任务在最下面
 
 import Cocoa
 import ReactiveCocoa

@@ -74,8 +74,7 @@ class TaskBLL: NSObject {
     
     currentTaskLog = TaskLog.taskLog(task)
     
-//    duration = 25 * 60
-    duration = 5
+    duration = 25 * 60
     
     taskObserver.sendNext((task, .StartTomato))
   }
@@ -157,11 +156,10 @@ class TaskBLL: NSObject {
   
     let currentRestTimes = restTimes() + 1
     setRestTimes(currentRestTimes)
-//    restLog.fixedDuration = 5 * 60
     if currentRestTimes%4 == 0 {
-      restLog.fixedDuration = 10
+      restLog.fixedDuration = 5 * 60
     }else {
-      restLog.fixedDuration = 5
+      restLog.fixedDuration = 20 * 60
     }
     
     currentRestLog = restLog
