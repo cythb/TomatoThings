@@ -25,13 +25,12 @@ class TaskBLL: NSObject {
     return f
   }()
   private var duration: NSTimeInterval = 25 * 60 //阶段需要的时间
+  private var currentRestLog: RestLog?
+  private var currentTaskLog: TaskLog?
   
   let progressingTask = MutableProperty<Task?>(nil)
   let remainTimeText = MutableProperty<String>("25:00")
   let (taskSignal, taskObserver) = Signal<Int, NoError>.pipe()
-  
-  override init() {
-  }
   
   func addTask(title: String, eNUMT: Int16) -> Task? {
     let task = TaskDAL.shared().addTask(title, eNUMT: eNUMT)
@@ -44,7 +43,7 @@ class TaskBLL: NSObject {
    
    - parameter task: 针对的任务
    */
-  func start(task: Task) {
+  func startTask(task: Task) {
     guard nil == timer else {
       return
     }
@@ -54,7 +53,7 @@ class TaskBLL: NSObject {
     startDate = NSDate()
     timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimerFire:", userInfo: nil, repeats: true)
     
-    TaskLog.taskLog(task)
+    currentTaskLog = TaskLog.taskLog(task)
   }
   
   /**
@@ -62,8 +61,11 @@ class TaskBLL: NSObject {
    
    - parameter task: 针对的任务
    */
-  func stop(finish: Bool = false) {
+  func stopTask(finish: Bool = false) {
     guard let task = progressingTask.value else {
+      return
+    }
+    guard let taskLog = currentTaskLog else {
       return
     }
     
@@ -78,6 +80,10 @@ class TaskBLL: NSObject {
     } else {
       task.incompleteTomatos = task.incompleteTomatos+1
     }
+    
+    // log
+    taskLog.endDate = NSDate().timeIntervalSince1970
+    currentTaskLog = nil
   }
   
   /**
@@ -85,20 +91,44 @@ class TaskBLL: NSObject {
    
    - parameter task: task
    */
-  func finish(task: Task) {
-    let log = TaskLog.taskLog(task)
-    log.finishDate = NSDate().timeIntervalSince1970
+  func finishTask(task: Task) {
+    guard let taskLog = currentTaskLog else {
+      return
+    }
+    
+    task.finishDate = NSDate().timeIntervalSince1970
+    
+    // log
+    taskLog.endDate = NSDate().timeIntervalSince1970
+    currentTaskLog = nil
   }
   
   // MARK: - Rest
+  // 开始休息
+  func startRest(task: Task) {
+    let restLog = RestLog(aTask: task)
+    restLog.startDate = NSDate().timeIntervalSince1970
+    restLog.fixedDuration = 5 * 60
+    
+    currentRestLog = restLog
+  }
   
+  // 结束休息
+  func endRest() {
+    guard let restLog = currentRestLog else {
+      return
+    }
+    
+    restLog.endDate = NSDate().timeIntervalSince1970
+    currentRestLog = nil
+  }
   
   // MARK: - actions
   func onTimerFire(sender: NSTimer) {
     let date = NSDate()
     let diffTimeInterval = duration - (date.timeIntervalSince1970 - startDate.timeIntervalSince1970)
     guard diffTimeInterval > 0 else {
-      self.stop(true)
+      self.stopTask(true)
       taskObserver.sendNext(1)
       return
     }

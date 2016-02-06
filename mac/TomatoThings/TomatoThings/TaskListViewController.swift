@@ -126,9 +126,9 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     }
     
     if nil == TaskBLL.shared().progressingTask.value {
-      TaskBLL.shared().start(task)
+      TaskBLL.shared().startTask(task)
     }else if TaskBLL.shared().progressingTask.value == task {
-      TaskBLL.shared().stop()
+      TaskBLL.shared().stopTask()
     }
     
     tableView.reloadData()

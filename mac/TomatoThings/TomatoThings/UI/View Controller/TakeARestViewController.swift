@@ -22,7 +22,7 @@ class TakeARestViewController: NSViewController {
     self.dismissController(self)
     
     // 继续干一个番茄
-    TaskBLL.shared().start(task)
+    TaskBLL.shared().startTask(task)
   }
   
   @IBAction func onRestBtnClicked(sender: AnyObject) {
@@ -35,6 +35,6 @@ class TakeARestViewController: NSViewController {
       return
     }
     
-    TaskBLL.shared().finish(task)
+    TaskBLL.shared().finishTask(task)
   }
 }

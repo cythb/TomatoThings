@@ -23,5 +23,6 @@ extension Task {
     @NSManaged var title: String?
     @NSManaged var logs: NSSet?
     @NSManaged var restLogs: NSSet?
+    @NSManaged var finishDate: NSTimeInterval
 
 }

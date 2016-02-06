@@ -12,6 +12,10 @@ import CoreData
 
 class RestLog: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
-
+  init(aTask: Task) {
+    let entity = NSEntityDescription.entityForName("RestLog", inManagedObjectContext: CoreDataHelper.managedObjectContext)
+    super.init(entity: entity!, insertIntoManagedObjectContext: CoreDataHelper.managedObjectContext)
+    
+    self.task = aTask
+  }
 }

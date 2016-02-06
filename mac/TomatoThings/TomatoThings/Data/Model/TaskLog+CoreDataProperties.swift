@@ -14,8 +14,8 @@ import CoreData
 
 extension TaskLog {
 
-    @NSManaged var finishDate: NSTimeInterval
     @NSManaged var startDate: NSTimeInterval
+    @NSManaged var endDate: NSTimeInterval
     @NSManaged var task: Task?
 
 }

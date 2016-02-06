@@ -12,6 +12,7 @@
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="estimateNUMT" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="finishDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="incompleteTomatos" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="logs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskLog" inverseName="task" inverseEntity="TaskLog" syncable="YES"/>
@@ -24,7 +25,7 @@
     </entity>
     <elements>
         <element name="RestLog" positionX="99" positionY="45" width="128" height="105"/>
-        <element name="Task" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="Task" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="TaskLog" positionX="-63" positionY="213" width="128" height="30"/>
     </elements>
 </model>
