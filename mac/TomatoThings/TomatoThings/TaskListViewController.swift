@@ -64,6 +64,13 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
         break
       case .CompleteTask:
         self?.tableView.reloadData()
+        
+        let taskList = self?.arrayController.arrangedObjects as! [Task]
+        taskList.first?.index = TaskDAL.shared().nextIndexForTask()
+        self?.arrayController.rearrangeObjects()
+        self?.tableView.moveRowAtIndex(0, toIndex: taskList.count - 1)
+        
+        print(self?.arrayController.arrangedObjects)
       case .EndRest:
         self?.tableView.reloadData()
       default:

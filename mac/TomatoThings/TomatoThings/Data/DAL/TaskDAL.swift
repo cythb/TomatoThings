@@ -14,6 +14,14 @@ class TaskDAL: NSObject {
   static func shared() -> TaskDAL {
     return gShared
   }
+  
+  func nextIndexForTask() -> Int64 {
+    var index = NSUserDefaults.standardUserDefaults().integerForKey("task.index")
+    index++
+    NSUserDefaults.standardUserDefaults().setInteger(index, forKey: "task.index")
+    return Int64(index)
+  }
+  
   /**
   添加任务
   
@@ -37,10 +45,7 @@ class TaskDAL: NSObject {
     task.title = title
     task.estimateNUMT = eNUMT
     
-    var index = NSUserDefaults.standardUserDefaults().integerForKey("task.index")
-    index++
-    NSUserDefaults.standardUserDefaults().setInteger(index, forKey: "task.index")
-    task.index = Int64(index)
+    task.index = nextIndexForTask()
     return task
   }
   
