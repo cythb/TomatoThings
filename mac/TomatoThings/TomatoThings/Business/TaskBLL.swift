@@ -120,6 +120,7 @@ class TaskBLL: NSObject {
    */
   func finishTask(task: Task) {
     task.finishDate = NSDate().timeIntervalSince1970
+    task.finished = true
     
     taskObserver.sendNext((task, .CompleteTask))
     print("完成一个任务")

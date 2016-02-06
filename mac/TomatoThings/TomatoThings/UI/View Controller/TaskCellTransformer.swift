@@ -52,6 +52,9 @@ class TaskActionEnableTransformer: NSValueTransformer {
     guard let task = value as? Task else {
       return false
     }
+    guard !task.finished else {
+      return false
+    }
     guard nil != TaskBLL.shared().progressingTask.value else {
       return true
     }
@@ -68,6 +71,9 @@ class TaskActionNameTransformer: NSValueTransformer {
   override func transformedValue(value: AnyObject?) -> AnyObject? {
     guard let task = value as? Task else {
       return "开始"
+    }
+    guard !task.finished else {
+      return "已完成"
     }
     guard nil != TaskBLL.shared().progressingTask.value else {
       return "开始"
