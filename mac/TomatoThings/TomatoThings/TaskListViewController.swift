@@ -68,8 +68,6 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
       default:
         break
       }
-      
-      
     }
   }
   
