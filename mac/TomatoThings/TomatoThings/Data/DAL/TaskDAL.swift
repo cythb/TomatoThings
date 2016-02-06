@@ -36,6 +36,11 @@ class TaskDAL: NSObject {
     let task = CoreDataHelper.createEntity("Task") as! Task
     task.title = title
     task.estimateNUMT = eNUMT
+    
+    var index = NSUserDefaults.standardUserDefaults().integerForKey("task.index")
+    index++
+    NSUserDefaults.standardUserDefaults().setInteger(index, forKey: "task.index")
+    task.index = Int64(index)
     return task
   }
   

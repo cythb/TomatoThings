@@ -38,6 +38,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     NSValueTransformer.setValueTransformer(transformer, forName: "TaskTitleTransformer")
     return transformer
   }()
+  var sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
   
   override func viewDidLoad() { 
     super.viewDidLoad()

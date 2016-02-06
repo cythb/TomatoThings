@@ -19,11 +19,12 @@ extension Task {
     @NSManaged var content: String?
     @NSManaged var createTime: NSTimeInterval
     @NSManaged var estimateNUMT: Int16
+    @NSManaged var finishDate: NSTimeInterval
     @NSManaged var incompleteTomatos: Int16
     @NSManaged var title: String?
+    @NSManaged var finished: Bool
+    @NSManaged var index: Int64
     @NSManaged var logs: NSSet?
     @NSManaged var restLogs: NSSet?
-    @NSManaged var finishDate: NSTimeInterval
-    @NSManaged var finished: Bool
 
 }
