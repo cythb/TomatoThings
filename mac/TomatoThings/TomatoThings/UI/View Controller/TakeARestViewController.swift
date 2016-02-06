@@ -25,6 +25,20 @@ class TakeARestViewController: NSViewController {
     super.viewDidLoad()
     
     self.title = "休息一下:]"
+    
+    TaskBLL.shared().taskSignal.observeNext {[unowned self] (task, type) -> () in
+      switch type {
+      case .StartRest:
+        self.enabelButtons(self.view, enable: false)
+      case .EndRest:
+        self.enabelButtons(self.view, enable: true)
+        self.dismissController(self)
+        break
+      default:
+        break
+      }
+        
+    }
   }
  
   // MARK: - actions
@@ -35,10 +49,18 @@ class TakeARestViewController: NSViewController {
     TaskBLL.shared().startTomato(task)
   }
   
+  private func enabelButtons(inview: NSView, enable: Bool) {
+    for subview in inview.subviews {
+      if let btn = subview as? NSButton {
+        btn.enabled = enable
+      }else {
+        self.enabelButtons(subview, enable: enable)
+      }
+    }
+  }
+  
   @IBAction func onRestBtnClicked(sender: AnyObject) {
-    // TODO: 所有按钮不可用
-    // TODO: 休息一下
-    // 4 5 10 20 
+    TaskBLL.shared().startRest(task)
   }
   @IBAction func onFinishBtnClicked(sender: AnyObject) {
     self.dismissController(self)

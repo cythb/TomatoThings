@@ -46,7 +46,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
         
         // 弹出视图：休息／继续
         let restVC = TakeARestViewController(task: task)!
-        self?.presentViewControllerAsModalWindow(restVC)
+        self?.presentViewControllerAsSheet(restVC)
       case .DropTomato:
         self?.tableView.reloadData()
         
@@ -54,7 +54,9 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
       case .CompleteTask:
         // TODO: 标示任务完成
         self?.tableView.reloadData()
-        
+      case .EndRest:
+        self?.tableView.reloadData()
+      default:
         break
       }
       

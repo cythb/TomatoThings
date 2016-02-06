@@ -15,6 +15,8 @@ enum TaskSignalType {
   case StartTomato
   case EndTomato
   case DropTomato
+  case StartRest
+  case EndRest
 }
 
 class TaskBLL: NSObject {
@@ -45,6 +47,10 @@ class TaskBLL: NSObject {
     return task
   }
   
+  private func startTimer() {
+    startDate = NSDate()
+    timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimerFire:", userInfo: nil, repeats: true)
+  }
   // MARK: Task
   /**
    开始计时
@@ -58,8 +64,7 @@ class TaskBLL: NSObject {
     
     progressingTask.value = task
     
-    startDate = NSDate()
-    timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimerFire:", userInfo: nil, repeats: true)
+    startTimer()
     
     currentTaskLog = TaskLog.taskLog(task)
     
@@ -126,16 +131,18 @@ class TaskBLL: NSObject {
     currentRestLog = restLog
     
     duration = restLog.fixedDuration
+    
+    taskObserver.sendNext((task, .StartRest))
+    
+    startTimer()
   }
   
   // 结束休息
-  func endRest() {
-    guard let restLog = currentRestLog else {
-      return
-    }
-    
+  func endRest(restLog: RestLog) {
     restLog.endDate = NSDate().timeIntervalSince1970
     currentRestLog = nil
+    
+    taskObserver.sendNext((restLog.task!, .EndRest))
   }
   
   // MARK: - actions
@@ -143,7 +150,11 @@ class TaskBLL: NSObject {
     let date = NSDate()
     let diffTimeInterval = duration - (date.timeIntervalSince1970 - startDate.timeIntervalSince1970)
     guard diffTimeInterval > 0 else {
-      self.stopTomato(true)
+      if let restLog = currentRestLog {
+        self.endRest(restLog)
+      } else {
+        self.stopTomato(true)
+      }
       return
     }
     
