@@ -32,12 +32,33 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
   override func viewDidLoad() { 
     super.viewDidLoad()
     
-    TaskBLL.shared().taskSignal.observeNext { [weak self](_) -> () in
-      self?.tableView.reloadData()
+    TaskBLL.shared().taskSignal.observeNext { [weak self](value) -> () in
       
-      // 弹出视图：休息／继续
-      let restVC = TakeARestViewController()
-      self?.presentViewControllerAsModalWindow(restVC)
+      let task = value.0
+      
+      switch value.1 {
+      case .StartTomato:
+        self?.tableView.reloadData()
+        
+        break
+      case .EndTomato:
+        self?.tableView.reloadData()
+        
+        // 弹出视图：休息／继续
+        let restVC = TakeARestViewController(task: task)!
+        self?.presentViewControllerAsModalWindow(restVC)
+      case .DropTomato:
+        self?.tableView.reloadData()
+        
+        break
+      case .CompleteTask:
+        // TODO: 标示任务完成
+        self?.tableView.reloadData()
+        
+        break
+      }
+      
+      
     }
   }
   
@@ -126,11 +147,9 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     }
     
     if nil == TaskBLL.shared().progressingTask.value {
-      TaskBLL.shared().startTask(task)
+      TaskBLL.shared().startTomato(task)
     }else if TaskBLL.shared().progressingTask.value == task {
-      TaskBLL.shared().stopTask()
+      TaskBLL.shared().stopTomato()
     }
-    
-    tableView.reloadData()
   }
 }

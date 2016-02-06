@@ -9,7 +9,17 @@
 import Cocoa
 
 class TakeARestViewController: NSViewController {
-  var task: Task!
+  var task: Task
+  
+  init?(task: Task) {
+    self.task = task
+    
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,7 +32,7 @@ class TakeARestViewController: NSViewController {
     self.dismissController(self)
     
     // 继续干一个番茄
-    TaskBLL.shared().startTask(task)
+    TaskBLL.shared().startTomato(task)
   }
   
   @IBAction func onRestBtnClicked(sender: AnyObject) {
@@ -31,10 +41,6 @@ class TakeARestViewController: NSViewController {
     // 4 5 10 20 
   }
   @IBAction func onFinishBtnClicked(sender: AnyObject) {
-    guard task != nil else {
-      return
-    }
-    
     TaskBLL.shared().finishTask(task)
   }
 }

@@ -10,6 +10,13 @@ import Cocoa
 import ReactiveCocoa
 import Result
 
+enum TaskSignalType {
+  case CompleteTask
+  case StartTomato
+  case EndTomato
+  case DropTomato
+}
+
 class TaskBLL: NSObject {
   static let gShared = TaskBLL()
   
@@ -30,7 +37,8 @@ class TaskBLL: NSObject {
   
   let progressingTask = MutableProperty<Task?>(nil)
   let remainTimeText = MutableProperty<String>("25:00")
-  let (taskSignal, taskObserver) = Signal<Int, NoError>.pipe()
+  // 番茄信号：完成任务；开始番茄；完成番茄；
+  let (taskSignal, taskObserver) = Signal<(Task, TaskSignalType), NoError>.pipe()
   
   func addTask(title: String, eNUMT: Int16) -> Task? {
     let task = TaskDAL.shared().addTask(title, eNUMT: eNUMT)
@@ -43,7 +51,7 @@ class TaskBLL: NSObject {
    
    - parameter task: 针对的任务
    */
-  func startTask(task: Task) {
+  func startTomato(task: Task) {
     guard nil == timer else {
       return
     }
@@ -54,6 +62,11 @@ class TaskBLL: NSObject {
     timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimerFire:", userInfo: nil, repeats: true)
     
     currentTaskLog = TaskLog.taskLog(task)
+    
+//    duration = 25 * 60
+    duration = 5
+    
+    taskObserver.sendNext((task, .StartTomato))
   }
   
   /**
@@ -61,7 +74,7 @@ class TaskBLL: NSObject {
    
    - parameter task: 针对的任务
    */
-  func stopTask(finish: Bool = false) {
+  func stopTomato(isEnd: Bool = false) {
     guard let task = progressingTask.value else {
       return
     }
@@ -69,21 +82,25 @@ class TaskBLL: NSObject {
       return
     }
     
-    timer.invalidate()
-    startDate = nil
-    progressingTask.value = nil
-    remainTimeText.value = "25:00"
-    
-    if finish {
+    if isEnd {
+      taskObserver.sendNext((task, .EndTomato))
       task.completeTomatos = task.completeTomatos+1
-      print("一个番茄结束")
+      print("完成一个番茄")
     } else {
+      print("放弃一个番茄")
+      taskObserver.sendNext((task, .DropTomato))
       task.incompleteTomatos = task.incompleteTomatos+1
     }
     
     // log
     taskLog.endDate = NSDate().timeIntervalSince1970
     currentTaskLog = nil
+    
+    // 收尾工作
+    timer.invalidate()
+    startDate = nil
+    progressingTask.value = nil
+    remainTimeText.value = "25:00"
   }
   
   /**
@@ -101,6 +118,9 @@ class TaskBLL: NSObject {
     // log
     taskLog.endDate = NSDate().timeIntervalSince1970
     currentTaskLog = nil
+    
+    taskObserver.sendNext((task, .CompleteTask))
+    print("完成一个任务")
   }
   
   // MARK: - Rest
@@ -108,9 +128,12 @@ class TaskBLL: NSObject {
   func startRest(task: Task) {
     let restLog = RestLog(aTask: task)
     restLog.startDate = NSDate().timeIntervalSince1970
-    restLog.fixedDuration = 5 * 60
+//    restLog.fixedDuration = 5 * 60
+    restLog.fixedDuration = 5
     
     currentRestLog = restLog
+    
+    duration = restLog.fixedDuration
   }
   
   // 结束休息
@@ -128,8 +151,7 @@ class TaskBLL: NSObject {
     let date = NSDate()
     let diffTimeInterval = duration - (date.timeIntervalSince1970 - startDate.timeIntervalSince1970)
     guard diffTimeInterval > 0 else {
-      self.stopTask(true)
-      taskObserver.sendNext(1)
+      self.stopTomato(true)
       return
     }
     

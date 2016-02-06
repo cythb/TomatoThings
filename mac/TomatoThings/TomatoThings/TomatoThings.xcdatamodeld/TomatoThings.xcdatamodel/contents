@@ -19,13 +19,13 @@
         <relationship name="restLogs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RestLog" inverseName="task" inverseEntity="RestLog" syncable="YES"/>
     </entity>
     <entity name="TaskLog" representedClassName=".TaskLog" syncable="YES">
-        <attribute name="finishDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="logs" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
         <element name="RestLog" positionX="99" positionY="45" width="128" height="105"/>
         <element name="Task" positionX="-63" positionY="-18" width="128" height="195"/>
-        <element name="TaskLog" positionX="-63" positionY="213" width="128" height="30"/>
+        <element name="TaskLog" positionX="-63" positionY="213" width="128" height="90"/>
     </elements>
 </model>
