@@ -124,6 +124,13 @@
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            <connections>
+                                                                <binding destination="3Oe-3F-dep" name="textColor" keyPath="objectValue" id="QNV-Qe-xvj">
+                                                                    <dictionary key="options">
+                                                                        <string key="NSValueTransformerName">TaskCellNUMTColorTransformer</string>
+                                                                    </dictionary>
+                                                                </binding>
+                                                            </connections>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="3Oe-3F-dep" name="value" keyPath="objectValue" id="a2T-fg-rK1">

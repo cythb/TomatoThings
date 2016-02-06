@@ -28,6 +28,11 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     NSValueTransformer.setValueTransformer(transformer, forName: "TaskActionNameTransformer")
     return transformer
   }()
+  var colorForNUMTransformer: TaskCellNUMTColorTransformer = {
+    let transformer = TaskCellNUMTColorTransformer()
+    NSValueTransformer.setValueTransformer(transformer, forName: "TaskCellNUMTColorTransformer")
+    return transformer
+  }()
   
   override func viewDidLoad() { 
     super.viewDidLoad()

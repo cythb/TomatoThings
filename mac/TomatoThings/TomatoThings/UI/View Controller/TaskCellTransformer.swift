@@ -8,6 +8,7 @@
 
 import Cocoa
 
+// MARK: - 番茄数列
 class TaskCellTransformer: NSValueTransformer {
   override class func transformedValueClass() -> AnyClass {
     return Task.self
@@ -23,6 +24,25 @@ class TaskCellTransformer: NSValueTransformer {
   }
 }
 
+class TaskCellNUMTColorTransformer: NSValueTransformer {
+  override class func transformedValueClass() -> AnyClass {
+    return Task.self
+  }
+  
+  override func transformedValue(value: AnyObject?) -> AnyObject? {
+    guard let task = value as? Task else {
+      return NSColor.blackColor()
+    }
+    
+    if task.completeTomatos > task.estimateNUMT {
+      return NSColor.redColor()
+    }else {
+      return NSColor.blackColor()
+    }
+  }
+}
+
+// MARK: - 动作列
 class TaskActionEnableTransformer: NSValueTransformer {
   override class func transformedValueClass() -> AnyClass {
     return Task.self
