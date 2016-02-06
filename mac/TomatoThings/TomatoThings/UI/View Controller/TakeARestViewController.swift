@@ -41,6 +41,8 @@ class TakeARestViewController: NSViewController {
     // 4 5 10 20 
   }
   @IBAction func onFinishBtnClicked(sender: AnyObject) {
+    self.dismissController(self)
+    
     TaskBLL.shared().finishTask(task)
   }
 }

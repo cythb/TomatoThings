@@ -109,15 +109,7 @@ class TaskBLL: NSObject {
    - parameter task: task
    */
   func finishTask(task: Task) {
-    guard let taskLog = currentTaskLog else {
-      return
-    }
-    
     task.finishDate = NSDate().timeIntervalSince1970
-    
-    // log
-    taskLog.endDate = NSDate().timeIntervalSince1970
-    currentTaskLog = nil
     
     taskObserver.sendNext((task, .CompleteTask))
     print("完成一个任务")
