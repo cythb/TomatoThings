@@ -86,7 +86,11 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="cHq-Ua-n4Q" name="value" keyPath="objectValue.title" id="CXr-rZ-HR9"/>
+                                                            <binding destination="cHq-Ua-n4Q" name="value" keyPath="objectValue" id="3fu-xt-jW8">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">TaskTitleTransformer</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </textField>
                                                 </subviews>

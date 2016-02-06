@@ -33,6 +33,11 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     NSValueTransformer.setValueTransformer(transformer, forName: "TaskCellNUMTColorTransformer")
     return transformer
   }()
+  var titleTransformer: TaskTitleTransformer = {
+    let transformer = TaskTitleTransformer()
+    NSValueTransformer.setValueTransformer(transformer, forName: "TaskTitleTransformer")
+    return transformer
+  }()
   
   override func viewDidLoad() { 
     super.viewDidLoad()
@@ -57,7 +62,6 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
         
         break
       case .CompleteTask:
-        // TODO: 标示任务完成
         self?.tableView.reloadData()
       case .EndRest:
         self?.tableView.reloadData()

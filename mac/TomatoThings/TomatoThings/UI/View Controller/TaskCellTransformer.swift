@@ -13,7 +13,7 @@ class TaskCellTransformer: NSValueTransformer {
   override class func transformedValueClass() -> AnyClass {
     return Task.self
   }
-
+  
   override func transformedValue(value: AnyObject?) -> AnyObject? {
     let task = value as? Task
     if task === nil {
@@ -84,5 +84,24 @@ class TaskActionNameTransformer: NSValueTransformer {
     }else {
       return "开始"
     }
+  }
+}
+
+class TaskTitleTransformer: NSValueTransformer {
+  override class func transformedValueClass() -> AnyClass {
+    return Task.self
+  }
+  
+  override func transformedValue(value: AnyObject?) -> AnyObject? {
+    guard let task = value as? Task else {
+      return ""
+    }
+    
+    let str = NSMutableAttributedString(string: task.title!)
+    if task.finished {
+      str.addAttribute(NSStrikethroughStyleAttributeName, value: true, range: NSMakeRange(0, task.title!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)))
+    }
+    
+    return str
   }
 }
