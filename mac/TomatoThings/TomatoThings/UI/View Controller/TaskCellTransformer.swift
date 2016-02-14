@@ -99,7 +99,7 @@ class TaskTitleTransformer: NSValueTransformer {
     
     let str = NSMutableAttributedString(string: task.title!)
     if task.finished {
-      str.addAttribute(NSStrikethroughStyleAttributeName, value: true, range: NSMakeRange(0, task.title!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)))
+      str.addAttribute(NSStrikethroughStyleAttributeName, value: true, range: NSMakeRange(0, str.length))
     }
     
     return str
