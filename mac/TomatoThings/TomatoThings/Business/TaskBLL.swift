@@ -49,7 +49,7 @@ class TaskBLL: NSObject {
   
   private func startTimer() {
     startDate = NSDate()
-    timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimerFire:", userInfo: nil, repeats: true)
+    timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "onTimerFire:", userInfo: nil, repeats: true)
   }
   private func invalidateTimer() {
     timer.invalidate()
