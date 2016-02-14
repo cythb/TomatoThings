@@ -670,21 +670,21 @@
         <window title="TomatoThings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="678" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="800" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="678" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IPj-FL-lcy">
-                        <rect key="frame" x="0.0" y="0.0" width="678" height="360"/>
+                    <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IPj-FL-lcy">
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <subviews>
                             <customView fixedFrame="YES" id="OB5-qR-qou">
-                                <rect key="frame" x="0.0" y="0.0" width="213" height="360"/>
+                                <rect key="frame" x="0.0" y="0.0" width="253" height="600"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
                             <customView fixedFrame="YES" id="XSU-mJ-sAu">
-                                <rect key="frame" x="223" y="0.0" width="455" height="360"/>
+                                <rect key="frame" x="254" y="0.0" width="546" height="600"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
                         </subviews>
