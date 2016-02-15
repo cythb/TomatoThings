@@ -160,7 +160,8 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
   
   // MARK: - NSTableViewDataSource
   func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
-    pboard.setData(nil, forType: "public.data")
+    let task = arrayController.arrangedObjects[rowIndexes.firstIndex] as! Task
+    // TTODO: convert to data
     return true
   }
   
