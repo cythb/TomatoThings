@@ -156,7 +156,7 @@ class TaskBLL: NSObject {
   
     let currentRestTimes = restTimes() + 1
     setRestTimes(currentRestTimes)
-    if currentRestTimes%4 == 0 {
+    if currentRestTimes == 0 || currentRestTimes%4 != 0 {
       restLog.fixedDuration = 5 * 60
     }else {
       restLog.fixedDuration = 20 * 60
