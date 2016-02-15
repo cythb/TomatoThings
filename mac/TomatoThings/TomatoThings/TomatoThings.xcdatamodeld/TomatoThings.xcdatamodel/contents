@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="Category" representedClassName=".Category" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="category" inverseEntity="Task" syncable="YES"/>
+    </entity>
     <entity name="RestLog" representedClassName=".RestLog" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="fixedDuration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -17,6 +22,7 @@
         <attribute name="incompleteTomatos" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="index" attributeType="Integer 64" minValueString="0" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="tasks" inverseEntity="Category" syncable="YES"/>
         <relationship name="logs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskLog" inverseName="task" inverseEntity="TaskLog" syncable="YES"/>
         <relationship name="restLogs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RestLog" inverseName="task" inverseEntity="RestLog" syncable="YES"/>
     </entity>
@@ -27,7 +33,8 @@
     </entity>
     <elements>
         <element name="RestLog" positionX="99" positionY="45" width="128" height="105"/>
-        <element name="Task" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="Task" positionX="-63" positionY="-18" width="128" height="240"/>
         <element name="TaskLog" positionX="-63" positionY="213" width="128" height="90"/>
+        <element name="Category" positionX="18" positionY="117" width="128" height="90"/>
     </elements>
 </model>
