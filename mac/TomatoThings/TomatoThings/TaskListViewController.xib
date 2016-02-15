@@ -26,16 +26,6 @@
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="RU6-Wk-lpE"/>
-        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1Gz-q0-daz">
-            <rect key="frame" x="0.0" y="0.0" width="37" height="17"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Rvb-pZ-tib">
-                <font key="font" metaFont="system"/>
-                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-            </textFieldCell>
-            <point key="canvasLocation" x="558.5" y="682.5"/>
-        </textField>
         <customView id="EfT-9d-wNQ">
             <rect key="frame" x="0.0" y="0.0" width="455" height="360"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -211,6 +201,7 @@
                                 </tableColumns>
                                 <connections>
                                     <binding destination="DJb-on-DLu" name="content" keyPath="arrangedObjects" id="pmd-hD-0Ot"/>
+                                    <outlet property="dataSource" destination="-2" id="IuV-gE-94d"/>
                                     <outlet property="delegate" destination="-2" id="223-0v-3Qe"/>
                                 </connections>
                             </tableView>

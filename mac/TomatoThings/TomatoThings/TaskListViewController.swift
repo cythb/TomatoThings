@@ -9,7 +9,7 @@
 import Cocoa
 import ReactiveCocoa
 
-class TaskListViewController: NSViewController, NSTextFieldDelegate {
+class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableViewDataSource {
   @IBOutlet var arrayController: NSArrayController!
   @IBOutlet weak var tableView: NSTableView!
   
@@ -40,7 +40,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
   }()
   var sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
   
-  override func viewDidLoad() { 
+  override func viewDidLoad() {
     super.viewDidLoad()
     
     TaskBLL.shared().taskSignal.observeNext { [weak self](value) -> () in
@@ -77,6 +77,8 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
         break
       }
     }
+    
+    tableView.registerForDraggedTypes(["public.data"])
   }
   
   // MARK: - NSTextFieldDelegate
@@ -156,6 +158,24 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate {
     return (taskTitle, taskETNUM)
   }
   
+  // MARK: - NSTableViewDataSource
+  func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
+    pboard.setData(nil, forType: "public.data")
+    return true
+  }
+  
+  func tableView(tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
+    if dropOperation == .Above {
+      return .Move
+    }
+    return .None
+  }
+  
+  func tableView(tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool {
+    return true
+  }
+  
+  // MARK: - Actions
   @IBAction func onStartBtnClicked(sender: NSButton) {
     let row = tableView.rowForView(sender)
     let cell = tableView.viewAtColumn(2, row: row, makeIfNecessary: true) as! NSTableCellView
