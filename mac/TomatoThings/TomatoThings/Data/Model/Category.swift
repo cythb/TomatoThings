@@ -13,8 +13,8 @@ import CoreData
 class Category: NSManagedObject, NSCoding {
 
 // Insert code here to add functionality to your managed object subclass
-    required init?(coder aDecoder: NSCoder) {
-        super.init(entity: NSEntityDescription(coder: aDecoder)!, insertIntoManagedObjectContext: nil)
+    convenience required init?(coder aDecoder: NSCoder) {
+        self.init(entity: NSEntityDescription(coder: aDecoder)!, insertIntoManagedObjectContext: nil)
         
         name = aDecoder.decodeObjectForKey("name") as? String
         index = Int16(aDecoder.decodeIntForKey("index"))
@@ -25,12 +25,12 @@ class Category: NSManagedObject, NSCoding {
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.setValue(name, forKey: "name")
-        aCoder.setValue(Int(index), forKey: "index")
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeObject(Int(index), forKey: "index")
 
         if let tasks = self.tasks {
             let data = NSKeyedArchiver.archivedDataWithRootObject(tasks)
-            aCoder.setValue(data, forKey: "tasks")
+            aCoder.encodeObject(data, forKey: "tasks")
         }
     }
 }

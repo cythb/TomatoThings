@@ -1,6 +1,6 @@
 //
 //  TaskLog.swift
-//  
+//
 //
 //  Created by tanghaibo on 16/2/4.
 //
@@ -9,15 +9,39 @@
 import Foundation
 import CoreData
 
-
-// TTODO:NSCoding
-class TaskLog: NSManagedObject {
-
-  class func taskLog(task: Task) -> TaskLog {
-    let taskLog = CoreDataHelper.createEntity("TaskLog") as! TaskLog
-    taskLog.task = task
-    taskLog.startDate = NSDate().timeIntervalSince1970
+/*
+@NSManaged var startDate: NSTimeInterval
+@NSManaged var endDate: NSTimeInterval
+@NSManaged var task: Task?
+*/
+class TaskLog: NSManagedObject, NSCoding {
     
-    return taskLog
-  }
+    class func taskLog(task: Task) -> TaskLog {
+        let taskLog = CoreDataHelper.createEntity("TaskLog") as! TaskLog
+        taskLog.task = task
+        taskLog.startDate = NSDate().timeIntervalSince1970
+        
+        return taskLog
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeDouble(startDate, forKey: "startDate")
+        aCoder.encodeDouble(endDate, forKey: "endDate")
+        
+        if let task = task {
+            let data = NSKeyedArchiver.archivedDataWithRootObject(task)
+            aCoder.encodeObject(data, forKey: "task")
+        }
+    }
+    
+    convenience required init?(coder aDecoder: NSCoder) {
+        self.init(entity: NSEntityDescription(coder: aDecoder)!, insertIntoManagedObjectContext: nil)
+        
+        startDate = aDecoder.decodeDoubleForKey("startDate")
+        endDate = aDecoder.decodeDoubleForKey("endDate")
+        
+        if let data = aDecoder.decodeObjectForKey("task") as? NSData {
+            task = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Task 
+        }
+    }
 }

@@ -161,7 +161,8 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
   // MARK: - NSTableViewDataSource
   func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
     let task = arrayController.arrangedObjects[rowIndexes.firstIndex] as! Task
-    // TTODO: convert to data
+    let data = NSKeyedArchiver.archivedDataWithRootObject(task)
+    pboard.setData(data, forType: "move_task.public")
     return true
   }
   
