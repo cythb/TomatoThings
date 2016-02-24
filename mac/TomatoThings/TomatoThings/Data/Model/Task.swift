@@ -10,10 +10,6 @@ import Foundation
 import CoreData
 
 
-//@NSManaged var logs: NSSet?
-//@NSManaged var restLogs: NSSet?
-//@NSManaged var category: NSManagedObject?
-
 class Task: NSManagedObject, NSCoding {
 
 // Insert code here to add functionality to your managed object subclass
@@ -29,9 +25,25 @@ class Task: NSManagedObject, NSCoding {
         aCoder.setValue(Int(index), forKey: "index")
         aCoder.setValue(title, forKey: "title")
         
-        // logs
-        // restlogs
-        // category
+        if let logs = self.logs {
+            let logsData = NSKeyedArchiver.archivedDataWithRootObject(logs)
+            aCoder.setValue(logsData, forKey: "logs")
+        }
+        
+        if let restLogs = self.restLogs {
+            let data = NSKeyedArchiver.archivedDataWithRootObject(restLogs)
+            aCoder.setValue(data, forKey: "restLogs")
+        }
+        
+        if let category = self.category {
+            let data = NSKeyedArchiver.archivedDataWithRootObject(category)
+            aCoder.setValue(data, forKey: "category")
+        }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(entity: NSEntityDescription(coder: aDecoder)!, insertIntoManagedObjectContext: nil)
+      
+      // TTODO:...
+    }
 }

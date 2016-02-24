@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 
+// TTODO:NSCoding
 class TaskLog: NSManagedObject {
 
   class func taskLog(task: Task) -> TaskLog {
@@ -19,5 +20,4 @@ class TaskLog: NSManagedObject {
     
     return taskLog
   }
-
 }
