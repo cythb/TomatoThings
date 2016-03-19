@@ -57,10 +57,20 @@ class Task: NSManagedObject, NSCoding {
         if let logsData = aDecoder.decodeObjectForKey("logs") as? NSData {
             logs = NSKeyedUnarchiver.unarchiveObjectWithData(logsData) as? NSSet
         }
+        logs?.enumerateObjectsUsingBlock({ (log, stop) -> Void in
+            if let l = log as? TaskLog {
+                l.task = self
+            }
+        })
         
         if let restLogsData = aDecoder.decodeObjectForKey("restLogs") as? NSData {
             restLogs = NSKeyedUnarchiver.unarchiveObjectWithData(restLogsData) as? NSSet
         }
+        restLogs?.enumerateObjectsUsingBlock({ (log, stop) -> Void in
+            if let l = log as? RestLog {
+                l.task = self
+            }
+        })
         
         if let categoryData = aDecoder.decodeObjectForKey("category") as? NSData {
             category = NSKeyedUnarchiver.unarchiveObjectWithData(categoryData) as? NSManagedObject

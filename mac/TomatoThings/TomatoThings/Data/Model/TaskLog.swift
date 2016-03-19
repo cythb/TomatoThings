@@ -27,11 +27,6 @@ class TaskLog: NSManagedObject, NSCoding {
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeDouble(startDate, forKey: "startDate")
         aCoder.encodeDouble(endDate, forKey: "endDate")
-        
-        if let task = task {
-            let data = NSKeyedArchiver.archivedDataWithRootObject(task)
-            aCoder.encodeObject(data, forKey: "task")
-        }
     }
     
     convenience required init?(coder aDecoder: NSCoder) {
@@ -39,9 +34,5 @@ class TaskLog: NSManagedObject, NSCoding {
         
         startDate = aDecoder.decodeDoubleForKey("startDate")
         endDate = aDecoder.decodeDoubleForKey("endDate")
-        
-        if let data = aDecoder.decodeObjectForKey("task") as? NSData {
-            task = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Task 
-        }
     }
 }

@@ -170,7 +170,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
         if dropOperation == .Above {
             return .Move
         }
-        return .Every
+        return .None
     }
     
     func tableView(tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool {
