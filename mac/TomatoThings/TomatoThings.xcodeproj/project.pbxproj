@@ -241,14 +241,14 @@
 		50E7566F1C61A77F007A68CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				50AE2BB61C71A11C0031F81C /* Category+CoreDataProperties.swift */,
 				50AE2BB71C71A11C0031F81C /* Category.swift */,
+				50AE2BB61C71A11C0031F81C /* Category+CoreDataProperties.swift */,
 				50CE61231C657F5700781C3D /* RestLog.swift */,
 				50CE61241C657F5700781C3D /* RestLog+CoreDataProperties.swift */,
-				50AE2BB51C71A11C0031F81C /* Task+CoreDataProperties.swift */,
-				50CE61251C657F5700781C3D /* Task.swift */,
 				50CE61271C657F5700781C3D /* TaskLog.swift */,
 				50CE61281C657F5700781C3D /* TaskLog+CoreDataProperties.swift */,
+				50CE61251C657F5700781C3D /* Task.swift */,
+				50AE2BB51C71A11C0031F81C /* Task+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

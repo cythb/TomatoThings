@@ -70,7 +70,6 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
                 self?.arrayController.rearrangeObjects()
                 self?.tableView.moveRowAtIndex(0, toIndex: taskList.count - 1)
                 
-                print(self?.arrayController.arrangedObjects)
             case .EndRest:
                 self?.tableView.reloadData()
             default:
@@ -160,9 +159,9 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
     
     // MARK: - NSTableViewDataSource
     func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
-        let task = arrayController.arrangedObjects[rowIndexes.firstIndex] as! Task
-        let data = NSKeyedArchiver.archivedDataWithRootObject(task)
-        pboard.setData(data, forType: "public.data")
+        let data = NSKeyedArchiver.archivedDataWithRootObject(rowIndexes)
+        pboard .declareTypes([NSStringPboardType], owner: self)
+        pboard.setData(data, forType: NSStringPboardType)
         return true
     }
     
@@ -174,6 +173,40 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
     }
     
     func tableView(tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool {
+        guard let data = info.draggingPasteboard().dataForType(NSStringPboardType) else {
+            return false
+        }
+        
+        guard let rowIndexes = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSIndexSet  else {
+            return false
+        }
+        
+        guard rowIndexes.firstIndex != NSNotFound else {
+            return false
+        }
+        
+        guard let task = arrayController.selectedObjects.last as? Task else {
+            return false
+        }
+        
+        let range = (row - 1 - rowIndexes.lastIndex)
+        print("range: \(range)")
+        
+        print("task.index before: \(task.index)")
+        task.index += range
+        print("task.index final: \(task.index)")
+        
+        for index in rowIndexes.lastIndex+1 ..< rowIndexes.lastIndex + abs(range) + 1 {
+            if index < arrayController.arrangedObjects.count {
+                if let t = arrayController.arrangedObjects[index] as? Task {
+                    print("t.index before: \(t.index)")
+                    t.index -= range
+                    print("t.index final: \(t.index)")
+                }
+            }
+        }
+        
+        arrayController.rearrangeObjects()
         return true
     }
     
