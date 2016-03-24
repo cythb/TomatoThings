@@ -107,10 +107,6 @@ class TaskBLL: NSObject {
         currentTaskLog = nil
         
         // 收尾工作
-        endHandle()
-    }
-    // 收尾工作
-    func endHandle() {
         progressingTask.value = nil
         
         invalidateTimer()
@@ -126,7 +122,7 @@ class TaskBLL: NSObject {
         task.finished = true
         
         if task == progressingTask.value {
-            endHandle()
+            stopTomato(false)
         }
         
         taskObserver.sendNext((task, .CompleteTask))
