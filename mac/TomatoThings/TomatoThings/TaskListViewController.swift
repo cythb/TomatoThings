@@ -28,6 +28,11 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
         NSValueTransformer.setValueTransformer(transformer, forName: "TaskActionNameTransformer")
         return transformer
     }()
+    var secondActionNameTransformer: TaskActionSecondNameTransformer = {
+        let transformer = TaskActionSecondNameTransformer()
+        NSValueTransformer.setValueTransformer(transformer, forName: "TaskActionSecondNameTransformer")
+        return transformer
+    }()
     var colorForNUMTransformer: TaskCellNUMTColorTransformer = {
         let transformer = TaskCellNUMTColorTransformer()
         NSValueTransformer.setValueTransformer(transformer, forName: "TaskCellNUMTColorTransformer")
@@ -223,6 +228,23 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
             TaskBLL.shared().startTomato(task)
         }else if TaskBLL.shared().progressingTask.value == task {
             TaskBLL.shared().stopTomato()
+        }
+    }
+    
+    @IBAction func onSecondBtnClicked(sender: NSButton) {
+        let row = tableView.rowForView(sender)
+        let cell = tableView.viewAtColumn(2, row: row, makeIfNecessary: true) as! NSTableCellView
+        guard let task = cell.objectValue as? Task else {
+            return
+        }
+        
+        if TaskBLL.shared().progressingTask.value == task {
+            //完成
+            TaskBLL.shared().finishTask(task)
+        } else {
+            //删除
+            TaskDAL.shared().removeTask(task)
+            arrayController.removeObject(task)
         }
     }
 }

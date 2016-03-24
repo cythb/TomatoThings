@@ -67,6 +67,7 @@ class TaskActionEnableTransformer: NSValueTransformer {
     }
 }
 
+///  transformer for title of the first button
 class TaskActionNameTransformer: NSValueTransformer {
     override class func transformedValueClass() -> AnyClass {
         return Task.self
@@ -87,6 +88,25 @@ class TaskActionNameTransformer: NSValueTransformer {
             return "放弃"
         }else {
             return "开始"
+        }
+    }
+}
+
+///  transformer for title of the second button
+class TaskActionSecondNameTransformer: NSValueTransformer {
+    override class func transformedValueClass() -> AnyClass {
+        return Task.self
+    }
+    
+    override func transformedValue(value: AnyObject?) -> AnyObject? {
+        guard let task = value as? Task else {
+            return "删除"
+        }
+        
+        if task == TaskBLL.shared().progressingTask.value {
+            return "完成"
+        }else {
+            return "删除"
         }
     }
 }
