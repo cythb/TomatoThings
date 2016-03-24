@@ -84,8 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-TomatoThings/ReactiveCocoa.framework"
+  install_framework "Pods-TomatoThings/Result.framework"
   install_framework "Pods-TomatoThings/SnapKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-TomatoThings/ReactiveCocoa.framework"
+  install_framework "Pods-TomatoThings/Result.framework"
   install_framework "Pods-TomatoThings/SnapKit.framework"
 fi

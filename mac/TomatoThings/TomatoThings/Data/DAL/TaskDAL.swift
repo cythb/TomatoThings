@@ -17,7 +17,7 @@ class TaskDAL: NSObject {
   
   func nextIndexForTask() -> Int64 {
     var index = NSUserDefaults.standardUserDefaults().integerForKey("task.index")
-    index++
+    index += 1
     NSUserDefaults.standardUserDefaults().setInteger(index, forKey: "task.index")
     return Int64(index)
   }

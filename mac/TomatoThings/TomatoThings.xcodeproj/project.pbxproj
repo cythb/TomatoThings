@@ -13,10 +13,6 @@
 		504EC9731C58665000895FC8 /* BoxListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504EC9711C58665000895FC8 /* BoxListViewController.xib */; };
 		504EC9761C58665A00895FC8 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EC9741C58665A00895FC8 /* TaskListViewController.swift */; };
 		504EC9771C58665A00895FC8 /* TaskListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504EC9751C58665A00895FC8 /* TaskListViewController.xib */; };
-		505429961C64697100E92E6B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505429941C64697100E92E6B /* ReactiveCocoa.framework */; };
-		505429971C64697100E92E6B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505429951C64697100E92E6B /* Result.framework */; };
-		505429991C646C8100E92E6B /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505429941C64697100E92E6B /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5054299A1C646C8100E92E6B /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505429951C64697100E92E6B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5099C9701C649875005236A4 /* TakeARestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099C96E1C649875005236A4 /* TakeARestViewController.swift */; };
 		5099C9711C649875005236A4 /* TakeARestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5099C96F1C649875005236A4 /* TakeARestViewController.xib */; };
 		50AE2BB81C71A11C0031F81C /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE2BB51C71A11C0031F81C /* Task+CoreDataProperties.swift */; };
@@ -58,8 +54,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				505429991C646C8100E92E6B /* ReactiveCocoa.framework in CopyFiles */,
-				5054299A1C646C8100E92E6B /* Result.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -74,8 +68,6 @@
 		504EC9711C58665000895FC8 /* BoxListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BoxListViewController.xib; path = ../../BoxListViewController.xib; sourceTree = "<group>"; };
 		504EC9741C58665A00895FC8 /* TaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskListViewController.swift; path = ../../TaskListViewController.swift; sourceTree = "<group>"; };
 		504EC9751C58665A00895FC8 /* TaskListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskListViewController.xib; path = ../../TaskListViewController.xib; sourceTree = "<group>"; };
-		505429941C64697100E92E6B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../../Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
-		505429951C64697100E92E6B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../../Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		5099C96E1C649875005236A4 /* TakeARestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeARestViewController.swift; sourceTree = "<group>"; };
 		5099C96F1C649875005236A4 /* TakeARestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakeARestViewController.xib; sourceTree = "<group>"; };
 		50AE2BB51C71A11C0031F81C /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -109,9 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				505429971C64697100E92E6B /* Result.framework in Frameworks */,
 				9183CE007C0268FABE41D5E9 /* Pods_TomatoThings.framework in Frameworks */,
-				505429961C64697100E92E6B /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,8 +118,6 @@
 		4FA434711769903E3C1F186D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				505429941C64697100E92E6B /* ReactiveCocoa.framework */,
-				505429951C64697100E92E6B /* Result.framework */,
 				0353AA30CCFF5CDC9FEEE9D0 /* Pods_TomatoThings.framework */,
 			);
 			name = Frameworks;

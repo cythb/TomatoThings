@@ -1,9 +1,12 @@
+source 'https://git.coding.net/hging/Specs.git'
+
 # platform :ios, '8.0'
 use_frameworks!
 
 target 'TomatoThings' do
 
 pod 'SnapKit', '~> 0.19'
+pod 'ReactiveCocoa', '~> 4.0'
 
 end
 

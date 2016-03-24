@@ -83,7 +83,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
     // MARK: - NSTextFieldDelegate
     func control(control: NSControl, textView: NSTextView, doCommandBySelector commandSelector: Selector) -> Bool {
         var retval = false
-        if commandSelector == "insertNewline:" {
+        if commandSelector == #selector(NSResponder.insertNewline(_:)) {
             retval = true
             
             guard let textField = control as? NSTextField else {
@@ -147,7 +147,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
                 taskETNUM = Int(value)
             }
             
-            range = text.rangeOfString(" -", options: .LiteralSearch, range: Range<String.Index>(start: range!.endIndex, end: text.endIndex), locale: nil)
+            range = text.rangeOfString(" -", options: .LiteralSearch)
         }
         
         if taskTitle == nil || taskTitle == ""{
@@ -198,7 +198,8 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
         
         for index in rowIndexes.lastIndex+1 ..< rowIndexes.lastIndex + abs(range) + 1 {
             if index < arrayController.arrangedObjects.count {
-                if let t = arrayController.arrangedObjects[index] as? Task {
+                if let objects = arrayController.arrangedObjects as? [Task] {
+                    let t = objects[index]
                     print("t.index before: \(t.index)")
                     t.index -= range
                     print("t.index final: \(t.index)")
