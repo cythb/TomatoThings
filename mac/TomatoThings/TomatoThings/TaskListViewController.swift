@@ -190,25 +190,41 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
             return false
         }
         
-        guard let task = arrayController.selectedObjects.last as? Task else {
-            return false
+        // rowIndexes.firstIndex ..< row
+        var orders = [Int64]()
+        for index in rowIndexes.firstIndex ..< row {
+            if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
+                if index < arrangedObjects.count {
+                    orders.append(arrangedObjects[index].index)
+                }
+            }
+        }
+        orders.sortInPlace()
+        
+        var arrangedTasks = [Task]()
+        for index in rowIndexes.lastIndex+1 ..< row {
+            if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
+                if index < arrangedObjects.count {
+                    arrangedTasks.append(arrangedObjects[index])
+                }
+            }
+        }
+        for index in rowIndexes.firstIndex ... rowIndexes.lastIndex {
+            if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
+                if index < arrangedObjects.count {
+                    arrangedTasks.append(arrangedObjects[index])
+                }
+            }
         }
         
-        let range = (row - 1 - rowIndexes.lastIndex)
-        print("range: \(range)")
-        
-        print("task.index before: \(task.index)")
-        task.index += range
-        print("task.index final: \(task.index)")
-        
-        for index in rowIndexes.lastIndex+1 ..< rowIndexes.lastIndex + abs(range) + 1 {
-            if index < arrayController.arrangedObjects.count {
-                if let objects = arrayController.arrangedObjects as? [Task] {
-                    let t = objects[index]
-                    print("t.index before: \(t.index)")
-                    t.index -= range
-                    print("t.index final: \(t.index)")
-                }
+        for index in 0 ..< arrangedTasks.count {
+            let t = arrangedTasks[index]
+            var i: Int64? = nil
+            if index < orders.count {
+                i = orders[index]
+            }
+            if let taskIndex = i {
+                t.index = taskIndex
             }
         }
         
