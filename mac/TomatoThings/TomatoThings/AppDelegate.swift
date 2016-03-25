@@ -38,13 +38,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     let menu = NSMenu()
-    menu.addItem(NSMenuItem(title: "Start/Stop", action: Selector("printQuote:"), keyEquivalent: "s"))
-    menu.addItem(NSMenuItem(title: "Open TomatoThings", action: Selector("printQuote:"), keyEquivalent: "o"))
+    menu.addItem(NSMenuItem(title: "Open TomatoThings", action: #selector(AppDelegate.openTomatoThingsAction(_:)), keyEquivalent: ""))
     menu.addItem(NSMenuItem.separatorItem())
     menu.addItem(NSMenuItem(title: "Quit TomatoThings", action: Selector("terminate:"), keyEquivalent: "q"))
     
     statusItem.menu = menu
   }
+    
+    // MARK: Menu actions
+    func openTomatoThingsAction(sender: AnyObject) {
+        window.orderFrontRegardless()
+    }
   
   // MARK: - Core Data stack
   
