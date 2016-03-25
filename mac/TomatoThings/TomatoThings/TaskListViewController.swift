@@ -152,7 +152,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
                 taskETNUM = Int(value)
             }
             
-            range = text.rangeOfString(" -", options: .LiteralSearch)
+            range = text.rangeOfString(" -", options: .LiteralSearch, range: Range<String.Index>(start: range!.endIndex, end: text.endIndex), locale: nil)
         }
         
         if taskTitle == nil || taskTitle == ""{
