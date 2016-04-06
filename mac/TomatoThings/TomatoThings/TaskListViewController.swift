@@ -192,30 +192,60 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
         
         // rowIndexes.firstIndex ..< row
         var orders = [Int64]()
-        for index in rowIndexes.firstIndex ..< row {
-            if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
-                if index < arrangedObjects.count {
-                    orders.append(arrangedObjects[index].index)
+        if rowIndexes.firstIndex < row {
+            for index in rowIndexes.firstIndex ..< row {
+                if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
+                    if index < arrangedObjects.count {
+                        orders.append(arrangedObjects[index].index)
+                    }
+                }
+            }
+        } else {
+            for index in row ... rowIndexes.lastIndex  {
+                if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
+                    if index < arrangedObjects.count {
+                        orders.append(arrangedObjects[index].index)
+                    }
                 }
             }
         }
         orders.sortInPlace()
         
         var arrangedTasks = [Task]()
-        for index in rowIndexes.lastIndex+1 ..< row {
-            if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
-                if index < arrangedObjects.count {
-                    arrangedTasks.append(arrangedObjects[index])
+        if rowIndexes.lastIndex+1 < row {
+            for index in rowIndexes.lastIndex+1 ..< row {
+                if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
+                    if index < arrangedObjects.count {
+                        arrangedTasks.append(arrangedObjects[index])
+                    }
                 }
             }
-        }
-        for index in rowIndexes.firstIndex ... rowIndexes.lastIndex {
-            if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
-                if index < arrangedObjects.count {
-                    arrangedTasks.append(arrangedObjects[index])
+            for index in rowIndexes.firstIndex ... rowIndexes.lastIndex {
+                if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
+                    if index < arrangedObjects.count {
+                        arrangedTasks.append(arrangedObjects[index])
+                    }
                 }
             }
+        } else if row < rowIndexes.firstIndex {
+            for index in rowIndexes.firstIndex ... rowIndexes.lastIndex {
+                if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
+                    if index < arrangedObjects.count {
+                        arrangedTasks.append(arrangedObjects[index])
+                    }
+                }
+            }
+            for index in row ..< rowIndexes.firstIndex {
+                if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
+                    if index < arrangedObjects.count {
+                        arrangedTasks.append(arrangedObjects[index])
+                    }
+                }
+            }
+        } else {
+            return false
         }
+        
         
         for index in 0 ..< arrangedTasks.count {
             let t = arrangedTasks[index]
