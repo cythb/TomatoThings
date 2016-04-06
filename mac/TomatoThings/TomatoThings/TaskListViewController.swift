@@ -68,13 +68,12 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
                 
                 break
             case .CompleteTask:
-                self?.tableView.reloadData()
-                
                 let taskList = self?.arrayController.arrangedObjects as! [Task]
-                taskList.first?.index = TaskDAL.shared().nextIndexForTask()
-                self?.arrayController.rearrangeObjects()
-                self?.tableView.moveRowAtIndex(0, toIndex: taskList.count - 1)
-                
+                if let index = taskList.indexOf(task) as Int! {
+                    task.index = TaskDAL.shared().nextCompleteIndexForTask()
+                    self?.arrayController.rearrangeObjects()
+                    self?.tableView.moveRowAtIndex(index, toIndex: taskList.count - 1)
+                }
             case .EndRest:
                 self?.tableView.reloadData()
             default:
@@ -115,6 +114,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
             
             let task = TaskBLL.shared().addTask(title, eNUMT: Int16(taskETNUM) )
             arrayController.addObject(task!)
+            arrayController.rearrangeObjects()
             
             return true
         }

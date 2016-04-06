@@ -21,6 +21,13 @@ class TaskDAL: NSObject {
     NSUserDefaults.standardUserDefaults().setInteger(index, forKey: "task.index")
     return Int64(index)
   }
+    
+    func nextCompleteIndexForTask() -> Int64 {
+        var index = NSUserDefaults.standardUserDefaults().integerForKey("task.index")
+        index += 1
+        index += 10000
+        return Int64(index)
+    }
   
   /**
   添加任务
