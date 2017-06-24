@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import ReactiveCocoa
+import ReactiveSwift
 
 class TakeARestViewController: NSViewController {
   var task: Task
@@ -28,13 +28,13 @@ class TakeARestViewController: NSViewController {
     
     self.title = "休息一下:]"
     
-    disposable = TaskBLL.shared().taskSignal.observeNext {[unowned self] (task, type) -> () in
+    disposable = TaskBLL.shared().taskSignal.observeValues {[unowned self] (task, type) -> () in
       switch type {
-      case .StartRest:
+      case .startRest:
         self.enabelButtons(self.view, enable: false)
-      case .EndRest:
+      case .endRest:
         self.enabelButtons(self.view, enable: true)
-        self.dismissController(self)
+        self.dismiss(self)
         break
       default:
         break
@@ -50,28 +50,28 @@ class TakeARestViewController: NSViewController {
   }
  
   // MARK: - actions
-  @IBAction func onContinueBtnClicked(sender: AnyObject) {
-    self.dismissController(self)
+  @IBAction func onContinueBtnClicked(_ sender: AnyObject) {
+    self.dismiss(self)
     
     // 继续干一个番茄
     TaskBLL.shared().startTomato(task)
   }
   
-  private func enabelButtons(inview: NSView, enable: Bool) {
+  fileprivate func enabelButtons(_ inview: NSView, enable: Bool) {
     for subview in inview.subviews {
       if let btn = subview as? NSButton {
-        btn.enabled = enable
+        btn.isEnabled = enable
       }else {
         self.enabelButtons(subview, enable: enable)
       }
     }
   }
   
-  @IBAction func onRestBtnClicked(sender: AnyObject) {
+  @IBAction func onRestBtnClicked(_ sender: AnyObject) {
     TaskBLL.shared().startRest(task)
   }
-  @IBAction func onFinishBtnClicked(sender: AnyObject) {
-    self.dismissController(self)
+  @IBAction func onFinishBtnClicked(_ sender: AnyObject) {
+    self.dismiss(self)
     
     TaskBLL.shared().finishTask(task)
   }

@@ -16,10 +16,10 @@ import CoreData
 */
 class TaskLog: NSManagedObject {
     
-    class func taskLog(task: Task) -> TaskLog {
+    class func taskLog(_ task: Task) -> TaskLog {
         let taskLog = CoreDataHelper.createEntity("TaskLog") as! TaskLog
         taskLog.task = task
-        taskLog.startDate = NSDate().timeIntervalSince1970
+        taskLog.startDate = Date().timeIntervalSince1970
         
         return taskLog
     }

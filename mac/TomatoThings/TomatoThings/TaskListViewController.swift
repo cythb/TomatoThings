@@ -1,3 +1,4 @@
+
 //
 //  TaskListViewController.swift
 //  TomatoThings
@@ -7,7 +8,7 @@
 //
 
 import Cocoa
-import ReactiveCocoa
+import ReactiveSwift
 
 class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableViewDataSource {
     @IBOutlet var arrayController: NSArrayController!
@@ -15,32 +16,32 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
     
     var tnumTransformer: TaskCellTransformer = {
         let transformer = TaskCellTransformer()
-        NSValueTransformer.setValueTransformer(transformer, forName: "TaskCellTransformer")
+        ValueTransformer.setValueTransformer(transformer, forName: NSValueTransformerName(rawValue: "TaskCellTransformer"))
         return transformer
     }()
     var actionEnableTransformer: TaskActionEnableTransformer = {
         let transformer = TaskActionEnableTransformer()
-        NSValueTransformer.setValueTransformer(transformer, forName: "TaskActionEnableTransformer")
+        ValueTransformer.setValueTransformer(transformer, forName: NSValueTransformerName(rawValue: "TaskActionEnableTransformer"))
         return transformer
     }()
     var actionNameTransformer: TaskActionNameTransformer = {
         let transformer = TaskActionNameTransformer()
-        NSValueTransformer.setValueTransformer(transformer, forName: "TaskActionNameTransformer")
+        ValueTransformer.setValueTransformer(transformer, forName: NSValueTransformerName(rawValue: "TaskActionNameTransformer"))
         return transformer
     }()
     var secondActionNameTransformer: TaskActionSecondNameTransformer = {
         let transformer = TaskActionSecondNameTransformer()
-        NSValueTransformer.setValueTransformer(transformer, forName: "TaskActionSecondNameTransformer")
+        ValueTransformer.setValueTransformer(transformer, forName: NSValueTransformerName(rawValue: "TaskActionSecondNameTransformer"))
         return transformer
     }()
     var colorForNUMTransformer: TaskCellNUMTColorTransformer = {
         let transformer = TaskCellNUMTColorTransformer()
-        NSValueTransformer.setValueTransformer(transformer, forName: "TaskCellNUMTColorTransformer")
+        ValueTransformer.setValueTransformer(transformer, forName: NSValueTransformerName(rawValue: "TaskCellNUMTColorTransformer"))
         return transformer
     }()
     var titleTransformer: TaskTitleTransformer = {
         let transformer = TaskTitleTransformer()
-        NSValueTransformer.setValueTransformer(transformer, forName: "TaskTitleTransformer")
+        ValueTransformer.setValueTransformer(transformer, forName: NSValueTransformerName(rawValue: "TaskTitleTransformer"))
         return transformer
     }()
     var sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
@@ -48,44 +49,44 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TaskBLL.shared().taskSignal.observeNext { [weak self](value) -> () in
+        TaskBLL.shared().taskSignal.observeValues { [weak self](value) -> () in
             
             let task = value.0
             
             switch value.1 {
-            case .StartTomato:
+            case .startTomato:
                 self?.tableView.reloadData()
                 
                 break
-            case .EndTomato:
+            case .endTomato:
                 self?.tableView.reloadData()
                 
                 // 弹出视图：休息／继续
                 let restVC = TakeARestViewController(task: task)!
                 self?.presentViewControllerAsSheet(restVC)
-            case .DropTomato:
+            case .dropTomato:
                 self?.tableView.reloadData()
                 
                 break
-            case .CompleteTask:
+            case .completeTask:
                 let taskList = self?.arrayController.arrangedObjects as! [Task]
-                if let index = taskList.indexOf(task) as Int! {
+                if let index = taskList.index(of: task) as Int! {
                     task.index = TaskDAL.shared().nextCompleteIndexForTask()
                     self?.arrayController.rearrangeObjects()
-                    self?.tableView.moveRowAtIndex(index, toIndex: taskList.count - 1)
+                    self?.tableView.moveRow(at: index, to: taskList.count - 1)
                 }
-            case .EndRest:
+            case .endRest:
                 self?.tableView.reloadData()
             default:
                 break
             }
         }
         
-        tableView.registerForDraggedTypes(["public.data"])
+        tableView.register(forDraggedTypes: ["public.data"])
     }
     
     // MARK: - NSTextFieldDelegate
-    func control(control: NSControl, textView: NSTextView, doCommandBySelector commandSelector: Selector) -> Bool {
+    func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         var retval = false
         if commandSelector == #selector(NSResponder.insertNewline(_:)) {
             retval = true
@@ -93,16 +94,15 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
             guard let textField = control as? NSTextField else {
                 return false
             }
-            guard var text: String = textField.stringValue else {
-                return false
-            }
-            guard text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 else {
+            guard textField.stringValue.lengthOfBytes(using: String.Encoding.utf8) > 0 else {
                 return false
             }
             
+            var text = textField.stringValue;
+            
             // 处理空格
-            while text.containsString("  ") {
-                text = text.stringByReplacingOccurrencesOfString("  ", withString: " ")
+            while text.contains("  ") {
+                text = text.replacingOccurrences(of: "  ", with: " ")
             }
             
             // 解析数据
@@ -122,19 +122,19 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
         return retval;
     }
     
-    func parseInputString(text: String) -> (title: String?, eNumT: Int) {
+    func parseInputString(_ text: String) -> (title: String?, eNumT: Int) {
         // this is a title -e 3
         var taskTitle: String? = nil
         var taskETNUM: Int! = 1
-        var range = text.rangeOfString(" -")
+        var range = text.range(of: " -")
         
         if nil != range {
-            taskTitle = text.substringToIndex(range!.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            taskTitle = text.substring(to: range!.lowerBound).trimmingCharacters(in: CharacterSet.whitespaces)
         }
         
-        while range != nil && range!.startIndex != range!.endIndex {
-            let temp = text.substringFromIndex(range!.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            let components = temp.componentsSeparatedByString(" ")
+        while range != nil && range!.lowerBound != range!.upperBound {
+            let temp = text.substring(from: range!.lowerBound).trimmingCharacters(in: CharacterSet.whitespaces)
+            let components = temp.components(separatedBy: " ")
             guard components.count > 1 else {
                 break
             }
@@ -152,7 +152,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
                 taskETNUM = Int(value)
             }
             
-            range = text.rangeOfString(" -", options: .LiteralSearch, range: Range<String.Index>(start: range!.endIndex, end: text.endIndex), locale: nil)
+            range = text.range(of: " -", options: .literal, range: (range!.upperBound ..< text.endIndex), locale: nil)
         }
         
         if taskTitle == nil || taskTitle == ""{
@@ -163,37 +163,37 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
     }
     
     // MARK: - NSTableViewDataSource
-    func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
-        let data = NSKeyedArchiver.archivedDataWithRootObject(rowIndexes)
+    func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool {
+        let data = NSKeyedArchiver.archivedData(withRootObject: rowIndexes)
         pboard .declareTypes([NSStringPboardType], owner: self)
         pboard.setData(data, forType: NSStringPboardType)
         return true
     }
     
-    func tableView(tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
-        if dropOperation == .Above {
-            return .Move
+    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
+        if dropOperation == .above {
+            return .move
         }
-        return .None
+        return NSDragOperation()
     }
     
-    func tableView(tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool {
-        guard let data = info.draggingPasteboard().dataForType(NSStringPboardType) else {
+    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool {
+        guard let data = info.draggingPasteboard().data(forType: NSStringPboardType) else {
             return false
         }
         
-        guard let rowIndexes = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSIndexSet  else {
+        guard let rowIndexes = NSKeyedUnarchiver.unarchiveObject(with: data) as? IndexSet  else {
             return false
         }
         
-        guard rowIndexes.firstIndex != NSNotFound else {
+        guard rowIndexes.first != NSNotFound else {
             return false
         }
         
         // rowIndexes.firstIndex ..< row
         var orders = [Int64]()
-        if rowIndexes.firstIndex < row {
-            for index in rowIndexes.firstIndex ..< row {
+        if rowIndexes.first! < row {
+            for index in rowIndexes.first! ..< row {
                 if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
                     if index < arrangedObjects.count {
                         orders.append(arrangedObjects[index].index)
@@ -201,7 +201,7 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
                 }
             }
         } else {
-            for index in row ... rowIndexes.lastIndex  {
+            for index in row ... rowIndexes.last!  {
                 if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
                     if index < arrangedObjects.count {
                         orders.append(arrangedObjects[index].index)
@@ -209,33 +209,33 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
                 }
             }
         }
-        orders.sortInPlace()
+        orders.sort()
         
         var arrangedTasks = [Task]()
-        if rowIndexes.lastIndex+1 < row {
-            for index in rowIndexes.lastIndex+1 ..< row {
+        if rowIndexes.last!+1 < row {
+            for index in rowIndexes.last!+1 ..< row {
                 if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
                     if index < arrangedObjects.count {
                         arrangedTasks.append(arrangedObjects[index])
                     }
                 }
             }
-            for index in rowIndexes.firstIndex ... rowIndexes.lastIndex {
+            for index in rowIndexes.first! ... rowIndexes.last! {
                 if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
                     if index < arrangedObjects.count {
                         arrangedTasks.append(arrangedObjects[index])
                     }
                 }
             }
-        } else if row < rowIndexes.firstIndex {
-            for index in rowIndexes.firstIndex ... rowIndexes.lastIndex {
+        } else if row < rowIndexes.first! {
+            for index in rowIndexes.first! ... rowIndexes.last! {
                 if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
                     if index < arrangedObjects.count {
                         arrangedTasks.append(arrangedObjects[index])
                     }
                 }
             }
-            for index in row ..< rowIndexes.firstIndex {
+            for index in row ..< rowIndexes.first! {
                 if let arrangedObjects = arrayController.arrangedObjects as? [Task] {
                     if index < arrangedObjects.count {
                         arrangedTasks.append(arrangedObjects[index])
@@ -263,9 +263,9 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
     }
     
     // MARK: - Actions
-    @IBAction func onStartBtnClicked(sender: NSButton) {
-        let row = tableView.rowForView(sender)
-        let cell = tableView.viewAtColumn(2, row: row, makeIfNecessary: true) as! NSTableCellView
+    @IBAction func onStartBtnClicked(_ sender: NSButton) {
+        let row = tableView.row(for: sender)
+        let cell = tableView.view(atColumn: 2, row: row, makeIfNecessary: true) as! NSTableCellView
         guard let task = cell.objectValue as? Task else {
             return
         }
@@ -277,9 +277,9 @@ class TaskListViewController: NSViewController, NSTextFieldDelegate, NSTableView
         }
     }
     
-    @IBAction func onSecondBtnClicked(sender: NSButton) {
-        let row = tableView.rowForView(sender)
-        let cell = tableView.viewAtColumn(2, row: row, makeIfNecessary: true) as! NSTableCellView
+    @IBAction func onSecondBtnClicked(_ sender: NSButton) {
+        let row = tableView.row(for: sender)
+        let cell = tableView.view(atColumn: 2, row: row, makeIfNecessary: true) as! NSTableCellView
         guard let task = cell.objectValue as? Task else {
             return
         }

@@ -17,9 +17,9 @@ extension Task {
     @NSManaged var addition: String?
     @NSManaged var completeTomatos: Int16
     @NSManaged var content: String?
-    @NSManaged var createTime: NSTimeInterval
+    @NSManaged var createTime: TimeInterval
     @NSManaged var estimateNUMT: Int16
-    @NSManaged var finishDate: NSTimeInterval
+    @NSManaged var finishDate: TimeInterval
     @NSManaged var finished: Bool
     @NSManaged var incompleteTomatos: Int16
     @NSManaged var index: Int64

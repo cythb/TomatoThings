@@ -27,23 +27,22 @@ class MainViewController: NSViewController {
         self.setupViews()
     }
     
-    private func setupViews() {
+    fileprivate func setupViews() {
         let arrangedSubviews = splitView.arrangedSubviews;
         guard let leftContainerView = arrangedSubviews[0] as NSView!,
-            mainContainerView = arrangedSubviews[1] as NSView!
-            where arrangedSubviews.count > 1
+            let mainContainerView = arrangedSubviews[1] as NSView!, arrangedSubviews.count > 1
             else {
                 return
         }
         
         leftContainerView.addSubview(boxListVC.view)
-        boxListVC.view.snp_makeConstraints { (make) -> Void in
-            make.edges.equalTo(EdgeInsetsZero)
+        boxListVC.view.snp.makeConstraints { (make) -> Void in
+            make.edges.equalTo(NSEdgeInsetsZero)
         }
         
         mainContainerView.addSubview(taskListVC.view)
-        taskListVC.view.snp_makeConstraints { (make) -> Void in
-            make.edges.equalTo(EdgeInsetsZero)
+        taskListVC.view.snp.makeConstraints { (make) -> Void in
+            make.edges.equalTo(NSEdgeInsetsZero)
         }
     }
 }

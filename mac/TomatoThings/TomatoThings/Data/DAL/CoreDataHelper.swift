@@ -18,8 +18,8 @@ class CoreDataHelper: NSObject {
    
    - returns: 成功创建的条目，或者nil
    */
-  static func createEntity(name: String) -> NSManagedObject {
-    let enety = NSEntityDescription.insertNewObjectForEntityForName(name, inManagedObjectContext: managedObjectContext)
+  static func createEntity(_ name: String) -> NSManagedObject {
+    let enety = NSEntityDescription.insertNewObject(forEntityName: name, into: managedObjectContext)
     return enety
   }
   
@@ -28,7 +28,7 @@ class CoreDataHelper: NSObject {
    
    - parameter task: 被删除的条目
    */
-  static func removeEntity(task: Task) {
-    managedObjectContext.deleteObject(task)
+  static func removeEntity(_ task: Task) {
+    managedObjectContext.delete(task)
   }
 }

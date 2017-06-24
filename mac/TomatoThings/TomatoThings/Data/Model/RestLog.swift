@@ -13,8 +13,8 @@ import CoreData
 class RestLog: NSManagedObject {
     
     convenience init(aTask: Task) {
-        let entity = NSEntityDescription.entityForName("RestLog", inManagedObjectContext: CoreDataHelper.managedObjectContext)
-        self.init(entity: entity!, insertIntoManagedObjectContext: CoreDataHelper.managedObjectContext)
+        let entity = NSEntityDescription.entity(forEntityName: "RestLog", in: CoreDataHelper.managedObjectContext)
+        self.init(entity: entity!, insertInto: CoreDataHelper.managedObjectContext)
         
         self.task = aTask
     }

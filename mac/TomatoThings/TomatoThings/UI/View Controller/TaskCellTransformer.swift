@@ -9,12 +9,12 @@
 import Cocoa
 
 // MARK: - 番茄数列
-class TaskCellTransformer: NSValueTransformer {
+class TaskCellTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
         return Task.self
     }
     
-    override func transformedValue(value: AnyObject?) -> AnyObject? {
+    override func transformedValue(_ value: Any?) -> Any? {
         let task = value as? Task
         if task === nil {
             return "NAN"
@@ -28,31 +28,31 @@ class TaskCellTransformer: NSValueTransformer {
     }
 }
 
-class TaskCellNUMTColorTransformer: NSValueTransformer {
+class TaskCellNUMTColorTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
         return Task.self
     }
     
-    override func transformedValue(value: AnyObject?) -> AnyObject? {
+    override func transformedValue(_ value: Any?) -> Any? {
         guard let task = value as? Task else {
-            return NSColor.blackColor()
+            return NSColor.black
         }
         
         if task.completeTomatos > task.estimateNUMT {
-            return NSColor.redColor()
+            return NSColor.red
         }else {
-            return NSColor.blackColor()
+            return NSColor.black
         }
     }
 }
 
 // MARK: - 动作列
-class TaskActionEnableTransformer: NSValueTransformer {
+class TaskActionEnableTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
         return Task.self
     }
     
-    override func transformedValue(value: AnyObject?) -> AnyObject? {
+    override func transformedValue(_ value: Any?) -> Any? {
         guard let task = value as? Task else {
             return false
         }
@@ -68,12 +68,12 @@ class TaskActionEnableTransformer: NSValueTransformer {
 }
 
 ///  transformer for title of the first button
-class TaskActionNameTransformer: NSValueTransformer {
+class TaskActionNameTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
         return Task.self
     }
     
-    override func transformedValue(value: AnyObject?) -> AnyObject? {
+    override func transformedValue(_ value: Any?) -> Any? {
         guard let task = value as? Task else {
             return "开始"
         }
@@ -93,12 +93,12 @@ class TaskActionNameTransformer: NSValueTransformer {
 }
 
 ///  transformer for title of the second button
-class TaskActionSecondNameTransformer: NSValueTransformer {
+class TaskActionSecondNameTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
         return Task.self
     }
     
-    override func transformedValue(value: AnyObject?) -> AnyObject? {
+    override func transformedValue(_ value: Any?) -> Any? {
         guard let task = value as? Task else {
             return "删除"
         }
@@ -111,12 +111,12 @@ class TaskActionSecondNameTransformer: NSValueTransformer {
     }
 }
 
-class TaskTitleTransformer: NSValueTransformer {
+class TaskTitleTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
         return Task.self
     }
     
-    override func transformedValue(value: AnyObject?) -> AnyObject? {
+    override func transformedValue(_ value: Any?) -> Any? {
         guard let task = value as? Task else {
             return ""
         }

@@ -16,14 +16,14 @@ class TaskDAL: NSObject {
   }
   
   func nextIndexForTask() -> Int64 {
-    var index = NSUserDefaults.standardUserDefaults().integerForKey("task.index")
+    var index = UserDefaults.standard.integer(forKey: "task.index")
     index += 1
-    NSUserDefaults.standardUserDefaults().setInteger(index, forKey: "task.index")
+    UserDefaults.standard.set(index, forKey: "task.index")
     return Int64(index)
   }
     
     func nextCompleteIndexForTask() -> Int64 {
-        var index = NSUserDefaults.standardUserDefaults().integerForKey("task.index")
+        var index = UserDefaults.standard.integer(forKey: "task.index")
         index += 1
         index += 10000
         return Int64(index)
@@ -47,7 +47,7 @@ class TaskDAL: NSObject {
   
   - returns: 创建成果的Task对象
   */
-  func addTask(title: String, eNUMT: Int16) -> Task? {
+  func addTask(_ title: String, eNUMT: Int16) -> Task? {
     let task = CoreDataHelper.createEntity("Task") as! Task
     task.title = title
     task.estimateNUMT = eNUMT
@@ -63,7 +63,7 @@ class TaskDAL: NSObject {
   
   - returns: 成功返回true，否则返回false
   */
-  func removeTask(task: Task) {
+  func removeTask(_ task: Task) {
     CoreDataHelper.removeEntity(task)
   }
 }

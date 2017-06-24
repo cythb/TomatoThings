@@ -14,9 +14,9 @@ import CoreData
 
 extension RestLog {
 
-    @NSManaged var endDate: NSTimeInterval
+    @NSManaged var endDate: TimeInterval
     @NSManaged var fixedDuration: Double
-    @NSManaged var startDate: NSTimeInterval
+    @NSManaged var startDate: TimeInterval
     @NSManaged var task: Task?
 
 }
